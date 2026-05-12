@@ -24,7 +24,7 @@ from scripts.serpent_utils import configure_logging, list_case_dirs, load_config
 
 
 
-def run_extraction_batch(case_ids: List[str] | None = None, spectra: bool = True) -> None:
+def run_extraction_batch(case_ids: List[str] | None = None, spectra: bool = False) -> None:
     """Run extraction over all/specified cases in parallel."""
     cfg = load_config()
     root = Path(__file__).resolve().parent.parent
