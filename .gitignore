@@ -1,0 +1,9 @@
+__pycache__/
+.pytest_cache/
+.cache/
+*.pyc
+processed/*.parquet
+processed/*.db
+processed/exports/*.csv
+analysis/plots/**/*.png
+analysis/plots/**/*.html
