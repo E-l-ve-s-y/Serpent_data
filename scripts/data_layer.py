@@ -11,12 +11,12 @@ if __package__ is None or __package__ == "":
 
 import pandas as pd
 from sqlalchemy import create_engine
+from sqlalchemy.engine import Engine
 
 from scripts.serpent_utils import load_config
 
 
-
-def get_engine():
+def get_engine() -> Engine:
     """Return SQLAlchemy engine for processed/data_lake.db."""
     cfg = load_config()
     root = Path(__file__).resolve().parent.parent

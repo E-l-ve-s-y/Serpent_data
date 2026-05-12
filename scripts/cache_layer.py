@@ -10,7 +10,6 @@ from joblib import Memory
 from scripts.serpent_utils import load_config
 
 
-
 def get_cache() -> Memory:
     """Return configured joblib memory cache."""
     cfg = load_config()["cache"]

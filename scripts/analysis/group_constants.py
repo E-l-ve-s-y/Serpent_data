@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-
 def plot_xs_vs_burnup(gc_df: pd.DataFrame, xs_name: str = "INF_ABS", output_dir: str | None = None) -> Path:
     """Plot selected XS quantity versus burnup by group."""
     out_dir = Path(output_dir or ".")
