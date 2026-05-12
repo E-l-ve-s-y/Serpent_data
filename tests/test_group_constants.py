@@ -12,5 +12,5 @@ def test_parse_group_constants(tmp_path: Path) -> None:
 
     df = parse_case_group_constants("C011", case)
     assert not df.empty
-    assert set(["INF_FLX", "INF_DIFFCOE", "INF_ABS", "INF_FISS", "INF_NSF"]).issubset(df.columns)
+    assert {"INF_FLX", "INF_DIFFCOE", "INF_ABS", "INF_FISS", "INF_NSF"}.issubset(df.columns)
     assert sorted(df["group"].unique().tolist()) == [1, 2]
