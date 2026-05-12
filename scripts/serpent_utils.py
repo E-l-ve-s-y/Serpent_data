@@ -56,6 +56,7 @@ def parse_matrix(text: str, name: str) -> Optional[np.ndarray]:
         if not line:
             continue
         try:
+            # Serpent matrices may use Fortran-style D exponents; convert to E for Python float parsing.
             row = [float(x.replace("D", "E")) for x in line.split()]
         except ValueError:
             continue

@@ -47,11 +47,12 @@ def analyze_case(case_id: str) -> dict:
     out_dir.mkdir(parents=True, exist_ok=True)
     generate_core_plots(case_df, case_gc, out_dir, cr_target=cfg["analysis"]["cr_target"])
 
-    mass_cols = [c for c in case_df.columns if c.startswith("Mass_")][:6]
+    mass_cols = [c for c in case_df.columns if c.startswith("Mass_")]
     if mass_cols:
         plot_inventory(case_df, mass_cols, out_dir / "inventory.png")
 
-    poison_cols = [c for c in case_df.columns if any(p in c for p in ("Xe135", "Sm149", "Gd155", "Gd157"))]
+    poison_names = cfg.get("nuclides", {}).get("poisons", [])
+    poison_cols = [c for c in case_df.columns if any(p in c for p in poison_names)]
     if poison_cols:
         plot_inventory(case_df, poison_cols, out_dir / "poisons.png")
 

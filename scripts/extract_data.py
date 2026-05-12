@@ -106,7 +106,7 @@ def parse_case(case_id: str, case_path: Path, include_spectra: bool = False, act
         cfg = load_config()
         detectors = cfg["serpent"]["detectors"]
         det_rows: List[dict] = []
-        for det_file in sorted(case_path.glob("*_det*.m")):
+        for det_index, det_file in enumerate(sorted(case_path.glob("*_det*.m"))):
             det_text = det_file.read_text(encoding="utf-8", errors="ignore")
             for det in detectors:
                 arr = parse_matrix(det_text, f"DET{det}")
@@ -115,7 +115,7 @@ def parse_case(case_id: str, case_path: Path, include_spectra: bool = False, act
                 if arr is None:
                     continue
                 vals = arr[:, 0]
-                burn_index = min(len(det_rows) % n, n - 1)
+                burn_index = min(det_index, n - 1)
                 rec = {
                     "case_id": case_id,
                     "burnup_GWd_tHM": float(main_df.loc[burn_index, "burnup_GWd_tHM"]),
