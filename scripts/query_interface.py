@@ -20,12 +20,21 @@ from scripts.serpent_utils import load_config
 class QueryInterface:
     """Thin query API for AI agents and optimization scripts."""
 
+    _data_cache: pd.DataFrame | None = None
+    _gc_cache: pd.DataFrame | None = None
+
     def __init__(self) -> None:
         cfg = load_config()
         root = Path(__file__).resolve().parent.parent
         processed = root / cfg["paths"]["processed_root"]
-        self.data = pd.read_parquet(processed / "data.parquet") if (processed / "data.parquet").exists() else pd.DataFrame()
-        self.gc = pd.read_parquet(processed / "group_constants.parquet") if (processed / "group_constants.parquet").exists() else pd.DataFrame()
+        data_path = processed / "data.parquet"
+        gc_path = processed / "group_constants.parquet"
+        if QueryInterface._data_cache is None:
+            QueryInterface._data_cache = pd.read_parquet(data_path) if data_path.exists() else pd.DataFrame()
+        if QueryInterface._gc_cache is None:
+            QueryInterface._gc_cache = pd.read_parquet(gc_path) if gc_path.exists() else pd.DataFrame()
+        self.data = QueryInterface._data_cache
+        self.gc = QueryInterface._gc_cache
 
     def get_k_eff_vs_burnup(self, case_id: str) -> pd.DataFrame:
         return self.data[self.data["case_id"] == case_id][["burnup_GWd_tHM", "ANA_KEFF"]].copy()

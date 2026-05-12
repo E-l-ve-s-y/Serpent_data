@@ -12,6 +12,7 @@ import yaml
 
 LOGGER = logging.getLogger(__name__)
 ROOT = Path(__file__).resolve().parent.parent
+BURNUP_STEP_REL_TOL = 0.05
 
 
 def load_config() -> dict:
@@ -59,6 +60,7 @@ def parse_matrix(text: str, name: str) -> Optional[np.ndarray]:
             # Serpent matrices may use Fortran-style D exponents; convert to E for Python float parsing.
             row = [float(x.replace("D", "E")) for x in line.split()]
         except ValueError:
+            # Skip rows containing non-numeric metadata or malformed values.
             continue
         if row:
             rows.append(row)

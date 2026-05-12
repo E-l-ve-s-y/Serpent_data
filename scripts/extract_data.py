@@ -18,6 +18,7 @@ import numpy as np
 import pandas as pd
 
 from scripts.serpent_utils import (
+    BURNUP_STEP_REL_TOL,
     configure_logging,
     find_file,
     list_case_dirs,
@@ -50,6 +51,11 @@ def _extract_keff_values(text: str) -> Optional[np.ndarray]:
 
 
 def _calculate_fuel_volume_cm3(active_height_cm: float = 365.0, radius_cm: float = 0.410) -> float:
+    """Compute fuel pin volume using cylindrical geometry.
+
+    Notes:
+        Default radius corresponds to the reference fuel pellet radius in the problem statement.
+    """
     return math.pi * (radius_cm**2) * active_height_cm
 
 
@@ -136,7 +142,7 @@ def _warn_burnup_deviation(df: pd.DataFrame, target_steps: List[float]) -> None:
     target = np.array(target_steps, dtype=float)
     for step in df["burnup_GWd_tHM"].to_numpy(dtype=float):
         dev = float(np.min(np.abs(target - step)) / max(step, 1e-6))
-        if dev > 0.05:
+        if dev > BURNUP_STEP_REL_TOL:
             LOGGER.warning("Burnup step %.5f deviates from configured target by >5%%", step)
 
 

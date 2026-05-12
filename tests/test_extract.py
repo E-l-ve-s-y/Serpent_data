@@ -23,3 +23,11 @@ def test_parse_case_reads_conversion_ratio_and_reactivity(case_dir: Path) -> Non
     expected = (1.05 - 1.0) / 1.05 * 1e5
     assert df.loc[0, "reactivity_pcm"] == pytest.approx(expected)
     assert "Mass_U233_kg" in df.columns
+
+
+def test_parse_case_handles_missing_conversion_ratio(case_dir: Path) -> None:
+    dep = (case_dir / "input_dep.m").read_text(encoding="utf-8")
+    dep = dep.replace("CONVERSION_RATIO = [\n 9.80000E-01 0.0\n 1.01000E+00 0.0\n 1.03000E+00 0.0\n];\n\n", "")
+    (case_dir / "input_dep.m").write_text(dep, encoding="utf-8")
+    df, _ = parse_case("C011", case_dir, include_spectra=False)
+    assert df["conversion_ratio"].isna().all()

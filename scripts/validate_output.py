@@ -16,6 +16,7 @@ from typing import Dict, List
 import numpy as np
 
 from scripts.serpent_utils import (
+    BURNUP_STEP_REL_TOL,
     configure_logging,
     find_file,
     list_case_dirs,
@@ -72,7 +73,7 @@ def validate_case(case_path: Path) -> dict:
     matched_steps: List[float] = []
     if burnup.size > 0:
         for step in burnup.tolist():
-            if np.min(np.abs(target - step)) / max(step, 1e-6) <= 0.05:
+            if np.min(np.abs(target - step)) / max(step, 1e-6) <= BURNUP_STEP_REL_TOL:
                 matched_steps.append(float(step))
             else:
                 warnings.append(f"Burnup step deviation >5%: {step}")

@@ -31,6 +31,7 @@ def _reshape_to_burnup_steps(arr: np.ndarray, n_steps: int) -> np.ndarray:
     if rows == n_steps:
         return arr
     if rows % n_steps == 0:
+        # Handle flattened layout where values are stacked by burnup-step x group.
         g = rows // n_steps
         return arr[:, 0].reshape(n_steps, g)
     return arr[:n_steps]
