@@ -23,7 +23,7 @@ LOGGER = logging.getLogger(__name__)
 GC_NAMES = ["INF_FLX", "INF_DIFFCOE", "INF_ABS", "INF_FISS", "INF_NSF", "INF_S0", "INF_S1"]
 
 
-def _reshape_per_step(arr: np.ndarray, n_steps: int) -> np.ndarray:
+def _reshape_to_burnup_steps(arr: np.ndarray, n_steps: int) -> np.ndarray:
     arr = np.array(arr, dtype=float)
     if arr.ndim == 1:
         arr = arr[:, None]
@@ -60,7 +60,7 @@ def parse_case_group_constants(case_id: str, case_path: Path) -> pd.DataFrame:
     for name in GC_NAMES:
         arr = parse_matrix(coef_text, name)
         if arr is not None:
-            parsed[name] = _reshape_per_step(arr, n_steps)
+            parsed[name] = _reshape_to_burnup_steps(arr, n_steps)
 
     if not parsed:
         LOGGER.warning("No group constants found for %s", case_id)

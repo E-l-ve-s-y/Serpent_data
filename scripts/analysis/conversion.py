@@ -33,9 +33,10 @@ def identify_crossover_burnup(df: pd.DataFrame, target: float = 1.0) -> Optional
     """Find interpolated burnup where conversion ratio reaches target."""
     x = df["burnup_GWd_tHM"].to_numpy(dtype=float)
     y = df["conversion_ratio"].to_numpy(dtype=float)
+    eps = 1e-9
     for i in range(1, len(x)):
         y0, y1 = y[i - 1], y[i]
-        if (y0 - target) == 0:
+        if abs(y0 - target) < eps:
             return float(x[i - 1])
         if (y0 - target) * (y1 - target) <= 0:
             if y1 == y0:

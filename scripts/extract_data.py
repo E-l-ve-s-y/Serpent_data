@@ -49,7 +49,7 @@ def _extract_keff_values(text: str) -> Optional[np.ndarray]:
     return arr[:, 0]
 
 
-def _fuel_volume_cm3(active_height_cm: float = 365.0, radius_cm: float = 0.410) -> float:
+def _calculate_fuel_volume_cm3(active_height_cm: float = 365.0, radius_cm: float = 0.410) -> float:
     return math.pi * (radius_cm**2) * active_height_cm
 
 
@@ -79,7 +79,7 @@ def parse_case(case_id: str, case_path: Path, include_spectra: bool = False, act
         return pd.DataFrame(), pd.DataFrame()
 
     n = min(len(burn), len(keff))
-    volume = _fuel_volume_cm3(active_height_cm=active_height_cm)
+    volume = _calculate_fuel_volume_cm3(active_height_cm=active_height_cm)
     rows: List[dict] = []
     for i in range(n):
         row = {
