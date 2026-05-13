@@ -1,7 +1,7 @@
 # SERPENT 钍基 PWR 算例图形化分析报告
 
 > 数据来源：`results/data_processed/data.csv`（1 638 行，63 个算例）  
-> 图表路径：`results/analysis/plots/{CASE}/{图类型}.png`  
+> 图表路径：`plots/{CASE}/{图类型}.png`  
 > 所有结论均结合数据与图像给出，图注说明图反映的趋势及对高转化比优化的意义。
 
 ---
@@ -161,7 +161,7 @@
 
 ## 6. 图表结果展示
 
-> **图片路径说明**：所有图片保存在 `results/analysis/plots/{CASE}/` 目录下。  
+> **图片路径说明**：所有图片保存在 `plots/{CASE}/` 目录下。  
 > 每类图文件名固定，共六类（见下表）。
 
 | 图类型 | 文件名 | 描述 |
@@ -179,19 +179,19 @@
 
 #### A001（低 Th，基准 U235，无 Th 转化）
 
-![A001 keff-FIR-CR](results/analysis/plots/A001/keff_fir_cr.png)
+![A001 keff-FIR-CR](plots/A001/keff_fir_cr.png)
 
 > **图注**：A001 无 Th，初始 keff=1.247，燃耗末降至 0.798，说明纯 U235 燃料快速失去临界性。CR 约 0.98 全程维持（源于 U238 的寄生转化），但 FIR 快速下降至 0.34（可裂变量损失 66%）。对高转化比钍基 PWR 优化意义：确立无 Th 基准，说明 Th 的引入是提高 CR 的先决条件。
 
-![A001 核素库存](results/analysis/plots/A001/inventory_vs_efpd.png)
+![A001 核素库存](plots/A001/inventory_vs_efpd.png)
 
 > **图注**：A001 中 Adens_Th232 全程为零，U235 单调下降，U233/Pa233 始终为 0。说明没有 Th 时不存在 U233 增殖通道，这正是 A004–A012 引入 Th 后效果显著的对照依据。
 
-![A001 毒物演化](results/analysis/plots/A001/poison_evolution.png)
+![A001 毒物演化](plots/A001/poison_evolution.png)
 
 > **图注**：Sm149 在前 10 MWd/kgHM 内迅速累积后趋于平衡；Xe135 从零快速达到准静态。两种毒物均对 keff 有负效应（各约 -500 至 -1000 pcm），是影响 keff 末端能否维持临界的因素之一。
 
-![A001 裂变/吸收比](results/analysis/plots/A001/fission_absorption_ratio.png)
+![A001 裂变/吸收比](plots/A001/fission_absorption_ratio.png)
 
 > **图注**：A001 中只有 U235 的裂变/俘获比有意义（约 3.5），其他核素（Pu239、U238）在初期几乎为零。高 U235 裂变比说明该算例为典型热堆 U 循环，无钚转化路径。
 
@@ -199,19 +199,19 @@
 
 #### A007（高 Th，低 U235，最高增殖代表）
 
-![A007 keff-FIR-CR](results/analysis/plots/A007/keff_fir_cr.png)
+![A007 keff-FIR-CR](plots/A007/keff_fir_cr.png)
 
 > **图注**：A007 初始 keff=0.697（次临界），随燃耗上升至 0.845，反映了 U233 积累引起的反应性回升效应。CR 全程稳定在 1.04–1.05，FIR 从 1.0 上升至 1.76，表明 A007 是实现净增殖的代表算例。优化意义：高 Th 比例（Th_level=0.90）可实现 FIR>1 的增殖模式，但 keff 必须在外部补偿后才能运行。
 
-![A007 核素库存](results/analysis/plots/A007/inventory_vs_efpd.png)
+![A007 核素库存](plots/A007/inventory_vs_efpd.png)
 
 > **图注**：U233 原子数密度从零开始持续上升，Pa233 作为中间体保持低但稳定的水平，Th232 单调下降（被消耗转化）。这三条曲线直观展示了 Th→Pa→U233 转化链的完整动力学过程。
 
-![A007 毒物演化](results/analysis/plots/A007/poison_evolution.png)
+![A007 毒物演化](plots/A007/poison_evolution.png)
 
 > **图注**：A007 的 Sm149 和 Xe135 积累量与 A001 相似，但由于 keff 较低，同等毒物量对反应性的负面影响更为显著。高 Th 方案中控制毒物是关键工程挑战之一。
 
-![A007 裂变/吸收比](results/analysis/plots/A007/fission_absorption_ratio.png)
+![A007 裂变/吸收比](plots/A007/fission_absorption_ratio.png)
 
 > **图注**：A007 中 U235 的裂变/俘获比随燃耗下降（U235 耗尽），而 U233 的裂变通道逐渐接管（曲线中出现对应核素的贡献上升）。这是增殖型设计中燃料自持性的关键证据。
 
@@ -221,15 +221,15 @@
 
 #### B001（最低 U233 初装，最接近折中点）
 
-![B001 keff-FIR-CR](results/analysis/plots/B001/keff_fir_cr.png)
+![B001 keff-FIR-CR](plots/B001/keff_fir_cr.png)
 
 > **图注**：B001 初始 keff=1.571，末端 1.030，是 B 组唯一 keff末接近 1.0 的算例。CR=0.759 高于 B002–B012（CR<0.4），FIR=0.441（可裂变量损失 56%）。优化意义：B001 代表"高初始裂变核素 + 中等 Th"的折中方案，是 B 组最接近双目标约束的点，值得在其附近精细采样。
 
-![B001 核素库存](results/analysis/plots/B001/inventory_vs_efpd.png)
+![B001 核素库存](plots/B001/inventory_vs_efpd.png)
 
 > **图注**：U233 从高初始量持续下降（消耗大于增殖），Th232 稳定下降，Pa233 维持平衡。与 A007 对比：A007 是净增殖，B001 是净消耗，说明初始 U233 过高会抑制转化路径的相对效率。
 
-![B001 毒物演化](results/analysis/plots/B001/poison_evolution.png)
+![B001 毒物演化](plots/B001/poison_evolution.png)
 
 > **图注**：B001 毒物积累与 A 组相近，但初始高 keff 使毒物效应占比较小。末端 keff≈1.03 时，Sm/Xe 的负反应性仍在可控范围内，这是 B001 维持临界的关键因素。
 
@@ -237,11 +237,11 @@
 
 #### B006（U233 浓度中等，CR-keff 权衡的中间点）
 
-![B006 keff-FIR-CR](results/analysis/plots/B006/keff_fir_cr.png)
+![B006 keff-FIR-CR](plots/B006/keff_fir_cr.png)
 
 > **图注**：B006 keff末=1.820，CR末=0.142。与 B001 对比，增加 U233 初装后 keff 显著提升，但 CR 下降至极低值，说明高 U233 使 Th 转化路径的相对重要性急剧下降。这是 B 组 CR 随 U233 浓度单调下降的典型例证。
 
-![B006 裂变/吸收比](results/analysis/plots/B006/fission_absorption_ratio.png)
+![B006 裂变/吸收比](plots/B006/fission_absorption_ratio.png)
 
 > **图注**：B006 中 U233 的裂变/俘获比远高于其他核素，全程主导能量释放，其他核素（U235、Pu239）贡献可忽略不计。高 U233 浓度使体系成为单一核素驱动的热堆，失去了转化的动力。
 
@@ -251,15 +251,15 @@
 
 #### C001（最低 Pu，最高转化，代表高转化边界）
 
-![C001 keff-FIR-CR](results/analysis/plots/C001/keff_fir_cr.png)
+![C001 keff-FIR-CR](plots/C001/keff_fir_cr.png)
 
 > **图注**：C001 keff₀=1.450，末端降至 0.909（次临界），CR末=0.880，是 C 组 CR 最高的算例，也是 C 组唯一末端次临界的算例。优化意义：表明低 Pu 初装能获得最佳转化效率，但无法维持临界，需与补偿措施（如铍反射层、可燃毒物）配合使用。
 
-![C001 核素库存](results/analysis/plots/C001/inventory_vs_efpd.png)
+![C001 核素库存](plots/C001/inventory_vs_efpd.png)
 
 > **图注**：U233 从零开始持续增长（约+5.9 kg），Th232 消耗约 13 kg，Pa233 作为中间体始终保持动态平衡。C001 的 Th→U233 转化效率是 C 组最高的，提供了 Pu-Th 燃料循环中转化上限的实验数据。
 
-![C001 毒物演化](results/analysis/plots/C001/poison_evolution.png)
+![C001 毒物演化](plots/C001/poison_evolution.png)
 
 > **图注**：C001 中 Sm149 在约 10 步后趋于平衡，Xe135 几乎同步达到准静态。与 Pu 浓度更高的 C006–C012 相比，C001 的毒物积累量略低，因为初始高功率密度下的核素间竞争更弱。
 
@@ -267,7 +267,7 @@
 
 #### C002（最低 Pu 中仍能维持临界，关键临界转折点）
 
-![C002 keff-FIR-CR](results/analysis/plots/C002/keff_fir_cr.png)
+![C002 keff-FIR-CR](plots/C002/keff_fir_cr.png)
 
 > **图注**：C002 keff末=1.133，CR末=0.502，是 C 组"能维持临界且 CR 尚可"的临界转折点。相比 C001（CR=0.88，次临界），C002 增加了足够 Pu 以保持 keff>1，但 CR 损失约 38%。这是 C 组的 Pareto 最优点之一。
 
@@ -277,23 +277,23 @@
 
 #### D005（接近临界且 CR 适中，三元体系最佳折中点之一）
 
-![D005 keff-FIR-CR](results/analysis/plots/D005/keff_fir_cr.png)
+![D005 keff-FIR-CR](plots/D005/keff_fir_cr.png)
 
 > **图注**：D005 keff末=1.000（精确临界），CR末=0.717。在全部 63 个算例中，D005 是唯一一个末端几乎精确保持 keff≈1 的算例，代表了现有参数空间中"刚好维持临界"的工作点。优化意义：D005 是三元体系（Pu+U235+Th）在高 Th 比例下能维持 EOL 临界的边界解，是进一步高转化方向精细搜索的基准点。
 
-![D005 核素库存](results/analysis/plots/D005/inventory_vs_efpd.png)
+![D005 核素库存](plots/D005/inventory_vs_efpd.png)
 
 > **图注**：U233 持续增长（约+4.77 kg），Th232 消耗约 8.5 kg，Pa233 维持动态平衡。D005 的转化效率（CR=0.72）高于同组高 Pu 算例（D007–D009），验证了"控制 Pu 比例 + 保 Th 比例"的转化增效策略。
 
-![D005 毒物演化](results/analysis/plots/D005/poison_evolution.png)
+![D005 毒物演化](plots/D005/poison_evolution.png)
 
 > **图注**：D005 的毒物演化模式与 D 组其他算例高度一致，Sm149/Xe135 均在前 5 步达到准静态，说明毒物不是 D 组算例间差异的主要原因，主要差异来自初始燃料组成。
 
-![D005 裂变/吸收比](results/analysis/plots/D005/fission_absorption_ratio.png)
+![D005 裂变/吸收比](plots/D005/fission_absorption_ratio.png)
 
 > **图注**：D005 中 Pu239 和 U235 的裂变/俘获比均有贡献，两者比值随燃耗变化：初期 U235 主导，随燃耗增加 Pu239 及新生 U233 的贡献上升。这是三元燃料体系区别于单一裂变核素体系的关键特征。
 
-![D005 核素质量密度（EFPD）](results/analysis/plots/D005/mass_density_vs_efpd.png)
+![D005 核素质量密度（EFPD）](plots/D005/mass_density_vs_efpd.png)
 
 > **图注**：以 EFPD 为横轴可以看出，U233 质量密度在约前 500 EFPD 增速较快（Pa233 积累期），之后趋于平稳。Pu239 和 U235 持续下降。这验证了 D005 的增殖-燃耗动态平衡特征。
 
@@ -301,11 +301,11 @@
 
 #### D019（D 组 CR 最高，高转化率代表）
 
-![D019 keff-FIR-CR](results/analysis/plots/D019/keff_fir_cr.png)
+![D019 keff-FIR-CR](plots/D019/keff_fir_cr.png)
 
 > **图注**：D019 CR末=0.955，是 D 组 CR 最高的算例，但 keff末=0.881（次临界）。与 D005 相比，D019 通过增加 Th 比例获得了更高转化率，但失去了 EOL 临界性。优化意义：D019 代表了 D 组 CR 的上限，与 D005 共同界定了 D 组 keff-CR 的 Pareto 前沿。
 
-![D019 核素库存](results/analysis/plots/D019/inventory_vs_efpd.png)
+![D019 核素库存](plots/D019/inventory_vs_efpd.png)
 
 > **图注**：D019 的 U233 增长量（+5.9 kg）是 D 组最高，Th232 消耗量（-13.8 kg）也是 D 组最大，说明高 Th 比例带来了更强的转化动力，代价是反应性储量不足。
 
@@ -345,5 +345,5 @@
 ---
 
 *报告生成时间：2026-05-13*  
-*图表路径：`results/analysis/plots/`*  
+*图表路径：`plots/`*  
 *脚本：`results/script/analyze_data.py`*
