@@ -708,6 +708,128 @@ def parse_detector_flux(path: Path) -> Dict[str, float]:
     return result
 
 
+def parse_detector_flux_sum(path: Path) -> Dict[str, float]:
+    """
+    Parse SERPENT detector flux file (.sss_detN.m) and sum fluxes by energy group.
+
+    Returns dict with energy group keys ('G1' to 'G7') mapped to summed flux values
+    across all detector points for each group.
+    """
+    text = path.read_text(encoding='utf-8', errors='ignore')
+
+    # Require 7-group spectrum for this export.
+    match = re.search(r'DETflux_7g\s*=\s*\[(.*?)\];', text, re.S | re.I)
+    if not match:
+        return {}
+
+    block_text = match.group(1)
+    lines = block_text.splitlines()
+
+    n_groups = 7
+    sums_by_group: Dict[int, float] = {g: 0.0 for g in range(1, n_groups + 1)}
+
+    for line in lines:
+        line = line.strip()
+        if not line or line.startswith('%') or line.startswith('#'):
+            continue
+
+        parts = line.split()
+        if len(parts) < 11:
+            continue
+
+        try:
+            nums = [float(x) for x in parts]
+            if len(nums) < 11:
+                continue
+
+            e_group = int(nums[1])
+            flux = nums[10]
+            if 1 <= e_group <= n_groups:
+                sums_by_group[e_group] += flux
+        except (ValueError, IndexError):
+            continue
+
+    result: Dict[str, float] = {}
+    for g in range(1, n_groups + 1):
+        result[f'G{g}'] = sums_by_group[g]
+    return result
+
+
+def extract_spectra_for_case_and_detector(case_dir: Path, det_index: int) -> Optional[Dict[str, float]]:
+    """
+    Extract summed 7-group spectrum for a specific detector index in a case.
+
+    Returns:
+        Dict with energy group keys ('G1'-'G7') and summed flux values,
+        or None if corresponding detector file / 7-group block is not found.
+    """
+    case = case_dir.name
+    possible_names = [
+        f"{case}.sss_det{det_index}.m",
+        f"{case}.sss_det{det_index} copy.m",
+    ]
+
+    for fname in possible_names:
+        det_file = case_dir / fname
+        if det_file.exists():
+            summed = parse_detector_flux_sum(det_file)
+            if summed:
+                return summed
+    return None
+
+
+def extract_detector_spectra_all_cases(raw_dir: Path, det_min: int = 0, det_max: int = 25) -> List[Dict]:
+    """
+    Extract summed 7-group spectra for each case and each detector index in [det_min, det_max].
+
+    Each row corresponds to one (case, detector) pair with group sums over all fuel rods
+    (all detector points in DETflux_7g block).
+    """
+    rows: List[Dict] = []
+
+    for case_dir in sorted(raw_dir.iterdir()):
+        if not case_dir.is_dir():
+            continue
+        case = case_dir.name
+        if not case[0] in 'ABCD' or len(case) != 4:
+            continue
+
+        print(f"Summing detector spectra for {case}...", end=" ", flush=True)
+        found_count = 0
+
+        for det_index in range(det_min, det_max + 1):
+            summed = extract_spectra_for_case_and_detector(case_dir, det_index)
+            if not summed:
+                continue
+
+            row = {'case': case, 'detector': f'det{det_index}', **summed}
+            rows.append(row)
+            found_count += 1
+
+        if found_count > 0:
+            print(f"[OK] ({found_count} detectors)")
+        else:
+            print("[FAIL] (no det0-det25 7-group detector found)")
+
+    return rows
+
+
+def write_detector_spectra_csv(detector_rows: List[Dict], out_path: Path):
+    """Write per-case per-detector summed 7-group spectra to CSV."""
+    if not detector_rows:
+        print("No detector spectra data to write")
+        return
+
+    fieldnames = ['case', 'detector'] + [f'G{i}' for i in range(1, 8)]
+
+    with out_path.open('w', newline='', encoding='utf-8') as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(detector_rows)
+
+    print(f"Wrote detector spectra to {out_path}")
+
+
 def get_energy_bin_centers() -> List[float]:
     """Get geometric mean of energy bin centers for plotting."""
     centers = []
@@ -765,7 +887,16 @@ def extract_all_spectra(raw_dir: Path) -> List[Dict]:
         spectrum = extract_spectra_for_case(case_dir, det_index=1)
         
         if spectrum:
-            row = {'case': case, 'detector': 'det1', **spectrum}
+            # Convert group-integrated flux -> flux density (flux per energy interval)
+            # Use ENERGY_GROUPS to get band widths (ΔE)
+            widths = [high - low for (low, high) in ENERGY_GROUPS]
+            density_spectrum: Dict[str, float] = {}
+            for i, w in enumerate(widths):
+                key = f'G{i+1}'
+                val = spectrum.get(key, 0) or 0.0
+                density_spectrum[key] = (val / w) if w > 0 else 0.0
+
+            row = {'case': case, 'detector': 'det1', **density_spectrum}
             spectra_data.append(row)
             print("[OK]")
         else:
@@ -992,6 +1123,12 @@ if __name__ == '__main__':
             # Generate plots
             print("\nGenerating spectrum plots...")
             generate_spectrum_plots(spectra_data, OUT_SPECTRA_DIR)
+
+            # Export per-case per-detector (det0-det25) summed 7-group spectra
+            print("\nExporting detector_spectra.csv (det0-det25, 7-group sums)...")
+            detector_rows = extract_detector_spectra_all_cases(args.raw_dir, det_min=0, det_max=25)
+            detector_csv = OUT_DIR / "detector_spectra.csv"
+            write_detector_spectra_csv(detector_rows, detector_csv)
             
             print(f"\nSpectra extraction complete. Output: {OUT_SPECTRA_DIR}")
         else:
