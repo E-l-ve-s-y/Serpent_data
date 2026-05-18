@@ -844,10 +844,6 @@ def write_detector_spectra_csv(detector_rows: List[Dict], out_path: Path):
 
     print(f"Wrote detector spectra to {out_path}")
 
-
-# Plotting helper removed: energy bin center calculation not required when plotting is disabled.
-
-
 def extract_spectra_for_case(case_dir: Path, det_index: int = 1) -> Optional[Dict[str, float]]:
     """
     Extract neutron spectrum for a specific detector index in a case.
@@ -873,11 +869,6 @@ def extract_spectra_for_case(case_dir: Path, det_index: int = 1) -> Optional[Dic
             return parse_detector_flux(det_file)
     
     return None
-
-
-# Full-spectrum extraction removed (not required when plotting is disabled). Per-detector
-# extraction utilities remain to build `detector_spectra.csv`.
-
 
 # Generic spectra CSV writer removed; keep per-detector CSV writer `write_detector_spectra_csv`.
 
@@ -911,9 +902,6 @@ if __name__ == '__main__':
         print("SQLite Data Lake not available (data_layer.py not found)")
     
     # NOTE: 绘图相关逻辑已禁用；脚本只导出 CSV 输出（data.csv 与 detector_spectra.csv）。
-    # 若需要保留完整谱绘图功能，可在单独分支恢复 `extract_all_spectra` /
-    # `write_spectra_csv` / `generate_spectrum_plots` 的调用及相关依赖（matplotlib/numpy）。
-
     # 导出 per-case per-detector 的 7-group 汇总谱（det0-det25）到 detector_spectra.csv
     print("\nExporting detector_spectra.csv (det0-det25, 7-group sums)...")
     detector_rows = extract_detector_spectra_all_cases(args.raw_dir, det_min=0, det_max=25)
