@@ -1,4 +1,17 @@
 #!/usr/bin/env python3
+# 运行说明：
+# - 请从 `results/` 目录运行本脚本以确保相对导入正确。例如：
+#     cd results
+#     python script/extract_data.py --csv --sqlite
+# - 单独导出 CSV：
+#     python script/extract_data.py --csv
+# - 仅填充 SQLite 数据库（需要 `data_layer` 可用）：
+#     python script/extract_data.py --sqlite
+# - 注意：填充 SQLite 需安装脚本依赖并确保 `results/script/agent/data_layer.py` 可导入。
+# - 推荐使用系统 Python（与仓库 README 一致）。如遇导入错误，检查当前工作目录或使用 `python -m pip install -r requirements.txt`（若存在）。
+#
+# 说明结束。
+# 注意：本分支/版本已禁用绘图（matplotlib/numpy），脚本仅导出 `data.csv` 和 `detector_spectra.csv`。
 # pyright: reportMissingImports=false, reportMissingModuleSource=false
 """
 Extract MAT_fuel_MDENS (mass densities) and MAT_fuel_ADENS (atomic densities),
@@ -409,13 +422,18 @@ def walk_and_extract():
     
     # Write output CSV
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    # Include case metadata fields from cases.csv after `case`
-    fieldnames = ['BURN_STEP', 'case', 'layout_base', 'Th_level', 'Pu_level', 'U235_enrichment', 'U233_enrichment',
-                  'burnup_MWd_kgHM', 'EFPD', 'ANA_KEFF', 'reactivity_pcm', 'conversion_ratio']
+    # Only include the specific columns requested by the user, in this order.
+    fieldnames = [
+        'BURN_STEP','case','layout_base','Th_level','Pu_level','U235_enrichment','U233_enrichment',
+        'burnup_MWd_kgHM','EFPD','ANA_KEFF','reactivity_pcm','conversion_ratio'
+    ]
+    # Mdens (mass densities)
     fieldnames += [f'Mdens_{iso}' for iso in TARGET_ISOTOPES]
+    # Adens (atomic densities)
     fieldnames += [f'Adens_{iso}' for iso in TARGET_ISOTOPES]
-    # Add absolute mass columns (kg) computed from mass density and assembly fuel volume
+    # Mass (kg)
     fieldnames += [f'Mass_{iso}_kg' for iso in TARGET_ISOTOPES]
+    # Fission and capture reaction rates
     fieldnames += FISS_RATES
     fieldnames += CAPT_RATES
     
@@ -427,16 +445,13 @@ def walk_and_extract():
         'EFPD': 'day',
         'ANA_KEFF': 'dimensionless',
         'reactivity_pcm': 'pcm',
-        'conversion_ratio': 'dimensionless'
-    }
-    # Units for case metadata from cases.csv
-    units.update({
+        'conversion_ratio': 'dimensionless',
         'layout_base': 'layout',
         'Th_level': 'fraction',
         'Pu_level': 'fraction',
         'U235_enrichment': 'fraction',
         'U233_enrichment': 'fraction'
-    })
+    }
     units.update({f'Mdens_{iso}': 'g/cm3' for iso in TARGET_ISOTOPES})
     units.update({f'Adens_{iso}': 'atoms/barn/cm' for iso in TARGET_ISOTOPES})
     units.update({f'Mass_{iso}_kg': 'kg' for iso in TARGET_ISOTOPES})
@@ -830,13 +845,7 @@ def write_detector_spectra_csv(detector_rows: List[Dict], out_path: Path):
     print(f"Wrote detector spectra to {out_path}")
 
 
-def get_energy_bin_centers() -> List[float]:
-    """Get geometric mean of energy bin centers for plotting."""
-    centers = []
-    for low, high in ENERGY_GROUPS:
-        center = (low * high) ** 0.5  # Geometric mean for log scale
-        centers.append(center)
-    return centers
+# Plotting helper removed: energy bin center calculation not required when plotting is disabled.
 
 
 def extract_spectra_for_case(case_dir: Path, det_index: int = 1) -> Optional[Dict[str, float]]:
@@ -866,216 +875,14 @@ def extract_spectra_for_case(case_dir: Path, det_index: int = 1) -> Optional[Dic
     return None
 
 
-def extract_all_spectra(raw_dir: Path) -> List[Dict]:
-    """
-    Extract neutron spectra from all available detector files across all cases.
-    
-    Returns list of dicts with case, detector, and spectrum data.
-    """
-    spectra_data = []
-    
-    for case_dir in sorted(raw_dir.iterdir()):
-        if not case_dir.is_dir():
-            continue
-        case = case_dir.name
-        if not case[0] in 'ABCD' or len(case) != 4:
-            continue
-        
-        print(f"Extracting spectra for {case}...", end=" ", flush=True)
-        
-        # Extract from detector 1 (7-group spectrum)
-        spectrum = extract_spectra_for_case(case_dir, det_index=1)
-        
-        if spectrum:
-            # Convert group-integrated flux -> flux density (flux per energy interval)
-            # Use ENERGY_GROUPS to get band widths (ΔE)
-            widths = [high - low for (low, high) in ENERGY_GROUPS]
-            density_spectrum: Dict[str, float] = {}
-            for i, w in enumerate(widths):
-                key = f'G{i+1}'
-                val = spectrum.get(key, 0) or 0.0
-                density_spectrum[key] = (val / w) if w > 0 else 0.0
-
-            row = {'case': case, 'detector': 'det1', **density_spectrum}
-            spectra_data.append(row)
-            print("[OK]")
-        else:
-            print("[FAIL] (no 7-group detector found)")
-    
-    return spectra_data
+# Full-spectrum extraction removed (not required when plotting is disabled). Per-detector
+# extraction utilities remain to build `detector_spectra.csv`.
 
 
-def write_spectra_csv(spectra_data: List[Dict], out_path: Path):
-    """Write spectra data to CSV."""
-    if not spectra_data:
-        print("No spectra data to write")
-        return
-    
-    # Determine all energy groups present
-    first_row = spectra_data[0]
-    energy_cols = [k for k in first_row.keys() if k.startswith('G') and k[1:].isdigit()]
-    energy_cols_sorted = sorted(energy_cols, key=lambda x: int(x[1:]))
-    
-    fieldnames = ['case', 'detector'] + energy_cols_sorted
-    
-    # Convert list values to scalars before writing
-    cleaned_data = []
-    for row in spectra_data:
-        cleaned_row = {'case': row['case'], 'detector': row['detector']}
-        for col in energy_cols_sorted:
-            val = row.get(col, 0)
-            if isinstance(val, list):
-                cleaned_row[col] = val[0] if val else 0.0
-            else:
-                cleaned_row[col] = val
-        cleaned_data.append(cleaned_row)
-    
-    with out_path.open('w', newline='', encoding='utf-8') as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(cleaned_data)
-    
-    print(f"Wrote spectra to {out_path}")
+# Generic spectra CSV writer removed; keep per-detector CSV writer `write_detector_spectra_csv`.
 
 
-def generate_spectrum_plots(spectra_data: List[Dict], out_dir: Path):
-    """
-    Generate neutron spectrum plots.
-    
-    Creates:
-    1. Individual case spectrum plots (energy vs flux, log-scale x-axis)
-    2. Comparison plot for multiple cases
-    """
-    try:
-        import matplotlib.pyplot as plt
-        import numpy as np
-    except ImportError:
-        print("Warning: matplotlib not available, skipping spectrum plots")
-        return
-    
-    out_dir.mkdir(parents=True, exist_ok=True)
-    energy_centers = get_energy_bin_centers()
-    n_groups = len(energy_centers)
-    
-    # Group data by case letter for comparison
-    cases_by_group: Dict[str, List[Dict]] = {}
-    for row in spectra_data:
-        case = row['case']
-        group = case[0]
-        if group not in cases_by_group:
-            cases_by_group[group] = []
-        cases_by_group[group].append(row)
-    
-    # 1. Generate comparison plot for each group (A, B, C, D)
-    for group, cases in cases_by_group.items():
-        if not cases:
-            continue
-        
-        fig, ax = plt.subplots(figsize=(10, 6))
-        
-        for row in cases:
-            case = row['case']
-            # Extract scalar values from potentially list-typed data
-            fluxes = []
-            for i in range(n_groups):
-                val = row.get(f'G{i+1}', 0) or 0
-                if isinstance(val, list):
-                    val = val[0] if val else 0.0
-                fluxes.append(val)
-            
-            if not fluxes:
-                continue
-            
-            # Normalize for comparison
-            total_flux = sum(fluxes)
-            if total_flux > 0:
-                normalized = [f / total_flux for f in fluxes]
-            else:
-                normalized = fluxes
-            
-            ax.semilogx(energy_centers, normalized, 'o-', label=case, markersize=6)
-        
-        ax.set_xlabel('Neutron Energy (eV)', fontsize=12)
-        ax.set_ylabel('Normalized Flux (a.u.)', fontsize=12)
-        ax.set_title(f'Neutron Energy Spectrum Comparison - Group {group}', fontsize=14)
-        ax.grid(True, alpha=0.3)
-        ax.legend(fontsize=8, loc='best', ncol=2)
-        
-        plt.tight_layout()
-        out_path = out_dir / f'spectrum_comparison_{group}.png'
-        plt.savefig(out_path, dpi=150, bbox_inches='tight')
-        plt.close()
-        print(f"Generated {out_path.name}")
-    
-    # 2. Generate all-cases summary plot (one case per group)
-    fig, axes = plt.subplots(2, 2, figsize=(14, 10))
-    axes = axes.flatten()
-    
-    for idx, (group, cases) in enumerate(sorted(cases_by_group.items())):
-        if idx >= 4:
-            break
-        ax = axes[idx]
-        
-        # Plot first case from each group as representative
-        if cases:
-            row = cases[0]  # First case in group
-            fluxes = []
-            for i in range(n_groups):
-                val = row.get(f'G{i+1}', 0) or 0
-                if isinstance(val, list):
-                    val = val[0] if val else 0.0
-                fluxes.append(val)
-            
-            total_flux = sum(fluxes)
-            if total_flux > 0:
-                normalized = [f / total_flux for f in fluxes]
-            else:
-                normalized = fluxes
-            
-            ax.bar(range(n_groups), normalized, color=f'C{idx}', alpha=0.7)
-            ax.set_xlabel('Energy Group')
-            ax.set_ylabel('Normalized Flux')
-            ax.set_title(f'Group {group}: {row["case"]}')
-            ax.set_xticks(range(n_groups))
-            ax.set_xticklabels([f'G{i+1}' for i in range(n_groups)])
-    
-    plt.suptitle('Neutron Spectrum by Design Group (First Burnup Step)', fontsize=14)
-    plt.tight_layout()
-    out_path = out_dir / 'spectrum_summary_all_groups.png'
-    plt.savefig(out_path, dpi=150, bbox_inches='tight')
-    plt.close()
-    print(f"Generated {out_path.name}")
-    
-    # 3. Generate flux vs energy plot (absolute values, log-log)
-    fig, ax = plt.subplots(figsize=(12, 8))
-    
-    colors = plt.cm.viridis(np.linspace(0, 1, len(cases_by_group)))
-    for (group, cases), color in zip(sorted(cases_by_group.items()), colors):
-        # Average across all cases in group
-        avg_fluxes = [0.0] * n_groups
-        for row in cases:
-            for i in range(n_groups):
-                val = row.get(f'G{i+1}', 0) or 0
-                if isinstance(val, list):
-                    val = val[0]
-                avg_fluxes[i] += val
-        avg_fluxes = [f / len(cases) for f in avg_fluxes]
-        
-        ax.loglog(energy_centers, avg_fluxes, 'o-', color=color, 
-                  label=f'Group {group} (avg of {len(cases)} cases)', 
-                  linewidth=2, markersize=8)
-    
-    ax.set_xlabel('Neutron Energy (eV)', fontsize=12)
-    ax.set_ylabel('Neutron Flux (n/cm²/s)', fontsize=12)
-    ax.set_title('Average Neutron Energy Spectrum by Design Group', fontsize=14)
-    ax.grid(True, alpha=0.3, which='both')
-    ax.legend(fontsize=10)
-    
-    plt.tight_layout()
-    out_path = out_dir / 'spectrum_flux_loglog.png'
-    plt.savefig(out_path, dpi=150, bbox_inches='tight')
-    plt.close()
-    print(f"Generated {out_path.name}")
+# Plot generation removed to simplify script and avoid plotting dependencies.
 
 
 if __name__ == '__main__':
@@ -1088,8 +895,6 @@ if __name__ == '__main__':
                        help='Export to CSV (default: True)')
     parser.add_argument('--sqlite', action='store_true', default=True,
                        help='Populate SQLite Data Lake (default: True)')
-    parser.add_argument('--spectra', action='store_true', default=False,
-                       help='Extract neutron energy spectra and generate plots')
     parser.add_argument('--raw-dir', type=Path, 
                        default=Path(__file__).parent.parent / 'data_raw',
                        help='Raw data directory')
@@ -1105,31 +910,14 @@ if __name__ == '__main__':
     elif args.sqlite:
         print("SQLite Data Lake not available (data_layer.py not found)")
     
-    if args.spectra:
-        print("\n" + "=" * 60)
-        print("Extracting Neutron Energy Spectra")
-        print("=" * 60)
-        
-        OUT_SPECTRA_DIR.mkdir(parents=True, exist_ok=True)
-        
-        # Extract spectra from all cases
-        spectra_data = extract_all_spectra(args.raw_dir)
-        
-        if spectra_data:
-            # Write to CSV in neutron_spectra folder
-            spectra_csv = OUT_SPECTRA_DIR / "spectra_data.csv"
-            write_spectra_csv(spectra_data, spectra_csv)
-            
-            # Generate plots
-            print("\nGenerating spectrum plots...")
-            generate_spectrum_plots(spectra_data, OUT_SPECTRA_DIR)
+    # NOTE: 绘图相关逻辑已禁用；脚本只导出 CSV 输出（data.csv 与 detector_spectra.csv）。
+    # 若需要保留完整谱绘图功能，可在单独分支恢复 `extract_all_spectra` /
+    # `write_spectra_csv` / `generate_spectrum_plots` 的调用及相关依赖（matplotlib/numpy）。
 
-            # Export per-case per-detector (det0-det25) summed 7-group spectra
-            print("\nExporting detector_spectra.csv (det0-det25, 7-group sums)...")
-            detector_rows = extract_detector_spectra_all_cases(args.raw_dir, det_min=0, det_max=25)
-            detector_csv = OUT_DIR / "detector_spectra.csv"
-            write_detector_spectra_csv(detector_rows, detector_csv)
-            
-            print(f"\nSpectra extraction complete. Output: {OUT_SPECTRA_DIR}")
-        else:
-            print("No spectra data found")
+    # 导出 per-case per-detector 的 7-group 汇总谱（det0-det25）到 detector_spectra.csv
+    print("\nExporting detector_spectra.csv (det0-det25, 7-group sums)...")
+    detector_rows = extract_detector_spectra_all_cases(args.raw_dir, det_min=0, det_max=25)
+    detector_csv = OUT_DIR / "detector_spectra.csv"
+    write_detector_spectra_csv(detector_rows, detector_csv)
+
+    print("\nSpectra extraction complete. Output: {}".format(detector_csv))
