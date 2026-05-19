@@ -1,0 +1,95 @@
+Loading data from C:\Users\lsy05\serpent_data\results\data_processed\data.csv...
+Loaded 1638 rows, 63 cases
+Groups found: ['A', 'B', 'C', 'D']
+
+=== Adens_evolution plots ===
+Case A001 Adens_evolution saved
+Case A002 Adens_evolution saved
+Case A003 Adens_evolution saved
+Case A004 Adens_evolution saved
+Case A005 Adens_evolution saved
+Case A006 Adens_evolution saved
+Case A007 Adens_evolution saved
+Case A008 Adens_evolution saved
+Case A009 Adens_evolution saved
+Case A010 Adens_evolution saved
+Case A011 Adens_evolution saved
+Case A012 Adens_evolution saved
+Case B001 Adens_evolution saved
+Case B002 Adens_evolution saved
+Case B003 Adens_evolution saved
+Case B004 Adens_evolution saved
+Case B005 Adens_evolution saved
+Case B006 Adens_evolution saved
+Case B007 Adens_evolution saved
+Case B008 Adens_evolution saved
+Case B009 Adens_evolution saved
+Case B010 Adens_evolution saved
+Case B011 Adens_evolution saved
+Case B012 Adens_evolution saved
+Case C001 Adens_evolution saved
+Case C002 Adens_evolution saved
+Case C003 Adens_evolution saved
+Case C004 Adens_evolution saved
+Case C005 Adens_evolution saved
+Case C006 Adens_evolution saved
+Case C007 Adens_evolution saved
+Case C008 Adens_evolution saved
+Case C009 Adens_evolution saved
+Case C010 Adens_evolution saved
+Case C011 Adens_evolution saved
+Case C012 Adens_evolution saved
+Case D001 Adens_evolution saved
+Case D002 Adens_evolution saved
+Case D003 Adens_evolution saved
+Case D004 Adens_evolution saved
+Case D005 Adens_evolution saved
+Case D006 Adens_evolution saved
+Case D007 Adens_evolution saved
+Case D008 Adens_evolution saved
+Case D009 Adens_evolution saved
+Case D010 Adens_evolution saved
+Case D011 Adens_evolution saved
+Case D012 Adens_evolution saved
+Case D013 Adens_evolution saved
+Case D014 Adens_evolution saved
+Case D015 Adens_evolution saved
+Case D016 Adens_evolution saved
+Case D017 Adens_evolution saved
+Case D018 Adens_evolution saved
+Case D019 Adens_evolution saved
+Case D020 Adens_evolution saved
+Case D021 Adens_evolution saved
+Case D022 Adens_evolution saved
+Case D023 Adens_evolution saved
+Case D024 Adens_evolution saved
+Case D025 Adens_evolution saved
+Case D026 Adens_evolution saved
+Case D027 Adens_evolution saved
+
+=== CR Group Analysis ===
+
+--- Group A (12 cases) ---
+  Group_A summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\CR\Group_A\Group_A_summary.csv
+  Group A CR plot saved
+  Group A CR evolution plot saved
+
+--- Group B (12 cases) ---
+  Group_B summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\CR\Group_B\Group_B_summary.csv
+  Group B CR plot saved
+  Group B CR evolution plot saved
+
+--- Group C (12 cases) ---
+  Group_C summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\CR\Group_C\Group_C_summary.csv
+  Group C CR plot saved
+  Group C CR evolution plot saved
+
+--- Group D (27 cases) ---
+  Group_D summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\CR\Group_D\Group_D_summary.csv
+  Group D CR vs enrichment plot saved
+  Group D CR vs Th by Pu plot saved
+  Group D CR evolution plot saved
+
+=== All outputs generated ===
+  Adens_evolution: C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution
+  CR analysis:     C:\Users\lsy05\serpent_data\results\analysis\CR

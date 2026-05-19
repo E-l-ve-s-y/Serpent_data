@@ -77,7 +77,7 @@ ENERGY_GROUP_LABELS = [f'G{i+1}' for i in range(len(ENERGY_GROUPS))]
 # Isotopes to extract both MDENS and ADENS for
 TARGET_ISOTOPES = [
     'U233', 'U235', 'U238', 'Th232', 'Pa233', 'Pu239', 'Pu241',
-    'Am241', 'Am242', 'Am243', 'Am244', 'Am245', 'Sm149', 'Xe135'
+    'Pu240', 'Pu242', 'Am241', 'Am243', 'Sm149', 'Xe135'
 ]
 
 # Fixed power density used by the cases, taken from the Serpent input deck.
@@ -110,8 +110,6 @@ def isotope_aliases(iso: str) -> set[str]:
     """Return normalized aliases accepted for a target isotope label."""
     norm = normalize_iso_key(iso)
     aliases = {norm}
-    if norm == 'AM242':
-        aliases.update({'AM242M', 'AM242M1'})
     return aliases
 
 
