@@ -179,6 +179,50 @@ def build_group_summary(df, case_list):
     return pd.DataFrame(rows)
 
 
+def collect_adens_columns(df):
+    """Return the list of ADENS_KEY columns that exist in df, in ADENS_KEY order."""
+    return [c for c in ADENS_KEY if c in df.columns]
+
+
+def write_case_adens_summary(df, case_name, outdir):
+    """Write a per-case Adens summary CSV containing BURN_STEP 0..25 and
+    the requested meta columns followed by the ADENS_KEY columns.
+
+    Output path: <outdir>/<case_name>/<case_name>_adens_summary.csv
+    """
+    case_dir = Path(outdir) / case_name
+    case_dir.mkdir(parents=True, exist_ok=True)
+
+    df_c = df[df['case'] == case_name].sort_values('BURN_STEP')
+    # Keep only BURN_STEP 0..25 (inclusive)
+    if 'BURN_STEP' in df_c.columns:
+        df_c = df_c[df_c['BURN_STEP'].between(0, 25, inclusive='both')]
+
+    if df_c.empty:
+        print(f'  Case {case_name}: no rows with BURN_STEP 0..25, skipping adens CSV')
+        return
+
+    # Desired header order
+    meta_order = ['case', 'layout_base', 'Th_level', 'Pu_level',
+                  'U235_enrichment', 'U233_enrichment', 'burnup_MWd_kgHM',
+                  'EFPD', 'BURN_STEP']
+
+    adens_cols = collect_adens_columns(df)
+
+    out_cols = meta_order + adens_cols
+
+    # Ensure all columns exist in dataframe; missing ones will be created as NaN
+    for col in out_cols:
+        if col not in df_c.columns:
+            df_c[col] = np.nan
+
+    out_df = df_c.loc[:, out_cols]
+
+    out_path = case_dir / f'{case_name}_adens_summary.csv'
+    out_df.to_csv(out_path, index=False)
+    print(f'  Case {case_name}: adens summary CSV saved to {out_path}')
+
+
 def save_group_csv(summary_df, group_dir, group_name):
     """Save summary CSV into the group directory."""
     group_dir.mkdir(parents=True, exist_ok=True)
@@ -496,13 +540,14 @@ def main():
     adens_dir.mkdir(parents=True, exist_ok=True)
     cr_dir.mkdir(parents=True, exist_ok=True)
 
-    # Tee logging
+    # Tee logging: put logs in results/analysis/log by default
     if args.log:
         log_path = Path(args.log)
     else:
         ts = datetime.now().strftime('%Y%m%d_%H%M%S')
-        log_path = cr_dir / f'adens_cr_{ts}.log'
-    log_path.parent.mkdir(parents=True, exist_ok=True)
+        log_dir = BASE_DIR / 'analysis' / 'log'
+        log_dir.mkdir(parents=True, exist_ok=True)
+        log_path = log_dir / f'adens_cr_{ts}.log'
 
     orig_stdout = sys.stdout
     orig_stderr = sys.stderr
@@ -529,6 +574,11 @@ def _run(args, adens_dir, cr_dir):
     for case_name in sorted(df['case'].unique()):
         df_case = df[df['case'] == case_name].sort_values('BURN_STEP')
         plot_adens_evolution(df_case, case_name, adens_dir)
+        # Also write a per-case full Adens summary CSV (BURN_STEP 0..25)
+        try:
+            write_case_adens_summary(df, case_name, adens_dir)
+        except Exception as e:
+            print(f'  Warning: failed to write adens summary for {case_name}: {e}')
 
     # ── Part 2: CR group analysis ──────────────────────────────
     print('\n=== CR Group Analysis ===')
