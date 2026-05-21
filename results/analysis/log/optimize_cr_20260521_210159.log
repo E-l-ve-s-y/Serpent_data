@@ -1,0 +1,35 @@
+Loading data from C:\Users\lsy05\serpent_data\results\data_processed\data.csv...
+Loaded 1638 rows, 63 cases
+Groups: A(12), B(12), C(12), D(27)
+
+=== Generating Keff+CR Dual-Axis Plots ===
+  Group A plot saved: C:\Users\lsy05\serpent_data\results\analysis\Keff_CR_Optimization\Group_A_Keff_CR.png
+  Group B plot saved: C:\Users\lsy05\serpent_data\results\analysis\Keff_CR_Optimization\Group_B_Keff_CR.png
+  Group C plot saved: C:\Users\lsy05\serpent_data\results\analysis\Keff_CR_Optimization\Group_C_Keff_CR.png
+  Group D plot saved: C:\Users\lsy05\serpent_data\results\analysis\Keff_CR_Optimization\Group_D_Keff_CR.png
+
+=== Generating Group Envelope Plots ===
+  Group A envelope saved: C:\Users\lsy05\serpent_data\results\analysis\Keff_CR_Optimization\Group_A_Envelope.png
+  Group B envelope saved: C:\Users\lsy05\serpent_data\results\analysis\Keff_CR_Optimization\Group_B_Envelope.png
+  Group C envelope saved: C:\Users\lsy05\serpent_data\results\analysis\Keff_CR_Optimization\Group_C_Envelope.png
+  Group D envelope saved: C:\Users\lsy05\serpent_data\results\analysis\Keff_CR_Optimization\Group_D_Envelope.png
+
+=== Generating All-Groups Overlay ===
+  All groups overlay saved: C:\Users\lsy05\serpent_data\results\analysis\Keff_CR_Optimization\All_Groups_Comparison.png
+
+=== Finding Optimal Candidates ===
+  Group A (Keff≥0.8): A011 with CR=1.3409
+  Group B (Keff≥0.8): B001 with CR=0.7589
+  Group C (Keff≥0.8): C001 with CR=0.8804
+  Group D (Keff≥0.8): D019 with CR=0.9546
+  Optimal candidates plot saved: C:\Users\lsy05\serpent_data\results\analysis\Keff_CR_Optimization\Optimal_Candidates_Comparison.png
+
+=== Optimization Analysis ===
+Optimization data saved: C:\Users\lsy05\serpent_data\results\analysis\Keff_CR_Optimization\optimization_results.csv
+
+=== Generating Report ===
+Report saved: C:\Users\lsy05\serpent_data\Optimizing_CR_under_keff_Constraints.md
+
+=== COMPLETE ===
+Plots: C:\Users\lsy05\serpent_data\results\analysis\Keff_CR_Optimization
+Report: C:\Users\lsy05\serpent_data\Optimizing_CR_under_keff_Constraints.md
