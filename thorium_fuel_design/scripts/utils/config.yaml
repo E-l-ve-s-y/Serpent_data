@@ -1,0 +1,5 @@
+paths:
+  legacy_results_root: ../../results
+  default_csv: ../../results/data_processed/data.csv
+notes:
+  - "This config bridges new framework paths to existing results scripts."

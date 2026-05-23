@@ -1,0 +1,4 @@
+placeholders:
+  case_id: Serpent case identifier
+  temp_k: fuel temperature in Kelvin
+  material_block: rendered material cards
