@@ -1,0 +1,221 @@
+Loading data from C:\Users\lsy05\serpent_data\results\data_processed\data.csv...
+Loaded 1638 rows, 63 cases
+Groups found: ['A', 'B', 'C', 'D']
+
+=== Adens_evolution plots ===
+Case A001 Adens_evolution saved (12 plots)
+Case A001 Keff plot saved
+  Case A001: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A001\A001_adens_summary.csv
+Case A002 Adens_evolution saved (12 plots)
+Case A002 Keff plot saved
+  Case A002: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A002\A002_adens_summary.csv
+Case A003 Adens_evolution saved (12 plots)
+Case A003 Keff plot saved
+  Case A003: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A003\A003_adens_summary.csv
+Case A004 Adens_evolution saved (12 plots)
+Case A004 Keff plot saved
+  Case A004: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A004\A004_adens_summary.csv
+Case A005 Adens_evolution saved (12 plots)
+Case A005 Keff plot saved
+  Case A005: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A005\A005_adens_summary.csv
+Case A006 Adens_evolution saved (12 plots)
+Case A006 Keff plot saved
+  Case A006: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A006\A006_adens_summary.csv
+Case A007 Adens_evolution saved (12 plots)
+Case A007 Keff plot saved
+  Case A007: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A007\A007_adens_summary.csv
+Case A008 Adens_evolution saved (12 plots)
+Case A008 Keff plot saved
+  Case A008: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A008\A008_adens_summary.csv
+Case A009 Adens_evolution saved (12 plots)
+Case A009 Keff plot saved
+  Case A009: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A009\A009_adens_summary.csv
+Case A010 Adens_evolution saved (12 plots)
+Case A010 Keff plot saved
+  Case A010: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A010\A010_adens_summary.csv
+Case A011 Adens_evolution saved (12 plots)
+Case A011 Keff plot saved
+  Case A011: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A011\A011_adens_summary.csv
+Case A012 Adens_evolution saved (12 plots)
+Case A012 Keff plot saved
+  Case A012: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A012\A012_adens_summary.csv
+Case B001 Adens_evolution saved (12 plots)
+Case B001 Keff plot saved
+  Case B001: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\B001\B001_adens_summary.csv
+Case B002 Adens_evolution saved (12 plots)
+Case B002 Keff plot saved
+  Case B002: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\B002\B002_adens_summary.csv
+Case B003 Adens_evolution saved (12 plots)
+Case B003 Keff plot saved
+  Case B003: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\B003\B003_adens_summary.csv
+Case B004 Adens_evolution saved (12 plots)
+Case B004 Keff plot saved
+  Case B004: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\B004\B004_adens_summary.csv
+Case B005 Adens_evolution saved (12 plots)
+Case B005 Keff plot saved
+  Case B005: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\B005\B005_adens_summary.csv
+Case B006 Adens_evolution saved (12 plots)
+Case B006 Keff plot saved
+  Case B006: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\B006\B006_adens_summary.csv
+Case B007 Adens_evolution saved (12 plots)
+Case B007 Keff plot saved
+  Case B007: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\B007\B007_adens_summary.csv
+Case B008 Adens_evolution saved (12 plots)
+Case B008 Keff plot saved
+  Case B008: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\B008\B008_adens_summary.csv
+Case B009 Adens_evolution saved (12 plots)
+Case B009 Keff plot saved
+  Case B009: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\B009\B009_adens_summary.csv
+Case B010 Adens_evolution saved (12 plots)
+Case B010 Keff plot saved
+  Case B010: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\B010\B010_adens_summary.csv
+Case B011 Adens_evolution saved (12 plots)
+Case B011 Keff plot saved
+  Case B011: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\B011\B011_adens_summary.csv
+Case B012 Adens_evolution saved (12 plots)
+Case B012 Keff plot saved
+  Case B012: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\B012\B012_adens_summary.csv
+Case C001 Adens_evolution saved (12 plots)
+Case C001 Keff plot saved
+  Case C001: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\C001\C001_adens_summary.csv
+Case C002 Adens_evolution saved (12 plots)
+Case C002 Keff plot saved
+  Case C002: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\C002\C002_adens_summary.csv
+Case C003 Adens_evolution saved (12 plots)
+Case C003 Keff plot saved
+  Case C003: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\C003\C003_adens_summary.csv
+Case C004 Adens_evolution saved (12 plots)
+Case C004 Keff plot saved
+  Case C004: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\C004\C004_adens_summary.csv
+Case C005 Adens_evolution saved (12 plots)
+Case C005 Keff plot saved
+  Case C005: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\C005\C005_adens_summary.csv
+Case C006 Adens_evolution saved (12 plots)
+Case C006 Keff plot saved
+  Case C006: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\C006\C006_adens_summary.csv
+Case C007 Adens_evolution saved (12 plots)
+Case C007 Keff plot saved
+  Case C007: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\C007\C007_adens_summary.csv
+Case C008 Adens_evolution saved (12 plots)
+Case C008 Keff plot saved
+  Case C008: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\C008\C008_adens_summary.csv
+Case C009 Adens_evolution saved (12 plots)
+Case C009 Keff plot saved
+  Case C009: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\C009\C009_adens_summary.csv
+Case C010 Adens_evolution saved (12 plots)
+Case C010 Keff plot saved
+  Case C010: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\C010\C010_adens_summary.csv
+Case C011 Adens_evolution saved (12 plots)
+Case C011 Keff plot saved
+  Case C011: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\C011\C011_adens_summary.csv
+Case C012 Adens_evolution saved (12 plots)
+Case C012 Keff plot saved
+  Case C012: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\C012\C012_adens_summary.csv
+Case D001 Adens_evolution saved (12 plots)
+Case D001 Keff plot saved
+  Case D001: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D001\D001_adens_summary.csv
+Case D002 Adens_evolution saved (12 plots)
+Case D002 Keff plot saved
+  Case D002: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D002\D002_adens_summary.csv
+Case D003 Adens_evolution saved (12 plots)
+Case D003 Keff plot saved
+  Case D003: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D003\D003_adens_summary.csv
+Case D004 Adens_evolution saved (12 plots)
+Case D004 Keff plot saved
+  Case D004: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D004\D004_adens_summary.csv
+Case D005 Adens_evolution saved (12 plots)
+Case D005 Keff plot saved
+  Case D005: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D005\D005_adens_summary.csv
+Case D006 Adens_evolution saved (12 plots)
+Case D006 Keff plot saved
+  Case D006: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D006\D006_adens_summary.csv
+Case D007 Adens_evolution saved (12 plots)
+Case D007 Keff plot saved
+  Case D007: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D007\D007_adens_summary.csv
+Case D008 Adens_evolution saved (12 plots)
+Case D008 Keff plot saved
+  Case D008: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D008\D008_adens_summary.csv
+Case D009 Adens_evolution saved (12 plots)
+Case D009 Keff plot saved
+  Case D009: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D009\D009_adens_summary.csv
+Case D010 Adens_evolution saved (12 plots)
+Case D010 Keff plot saved
+  Case D010: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D010\D010_adens_summary.csv
+Case D011 Adens_evolution saved (12 plots)
+Case D011 Keff plot saved
+  Case D011: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D011\D011_adens_summary.csv
+Case D012 Adens_evolution saved (12 plots)
+Case D012 Keff plot saved
+  Case D012: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D012\D012_adens_summary.csv
+Case D013 Adens_evolution saved (12 plots)
+Case D013 Keff plot saved
+  Case D013: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D013\D013_adens_summary.csv
+Case D014 Adens_evolution saved (12 plots)
+Case D014 Keff plot saved
+  Case D014: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D014\D014_adens_summary.csv
+Case D015 Adens_evolution saved (12 plots)
+Case D015 Keff plot saved
+  Case D015: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D015\D015_adens_summary.csv
+Case D016 Adens_evolution saved (12 plots)
+Case D016 Keff plot saved
+  Case D016: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D016\D016_adens_summary.csv
+Case D017 Adens_evolution saved (12 plots)
+Case D017 Keff plot saved
+  Case D017: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D017\D017_adens_summary.csv
+Case D018 Adens_evolution saved (12 plots)
+Case D018 Keff plot saved
+  Case D018: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D018\D018_adens_summary.csv
+Case D019 Adens_evolution saved (12 plots)
+Case D019 Keff plot saved
+  Case D019: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D019\D019_adens_summary.csv
+Case D020 Adens_evolution saved (12 plots)
+Case D020 Keff plot saved
+  Case D020: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D020\D020_adens_summary.csv
+Case D021 Adens_evolution saved (12 plots)
+Case D021 Keff plot saved
+  Case D021: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D021\D021_adens_summary.csv
+Case D022 Adens_evolution saved (12 plots)
+Case D022 Keff plot saved
+  Case D022: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D022\D022_adens_summary.csv
+Case D023 Adens_evolution saved (12 plots)
+Case D023 Keff plot saved
+  Case D023: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D023\D023_adens_summary.csv
+Case D024 Adens_evolution saved (12 plots)
+Case D024 Keff plot saved
+  Case D024: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D024\D024_adens_summary.csv
+Case D025 Adens_evolution saved (12 plots)
+Case D025 Keff plot saved
+  Case D025: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D025\D025_adens_summary.csv
+Case D026 Adens_evolution saved (12 plots)
+Case D026 Keff plot saved
+  Case D026: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D026\D026_adens_summary.csv
+Case D027 Adens_evolution saved (12 plots)
+Case D027 Keff plot saved
+  Case D027: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\D027\D027_adens_summary.csv
+
+=== CR Group Analysis ===
+
+--- Group A (12 cases) ---
+  Group_A summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\CR\Group_A\Group_A_summary.csv
+  Group A CR plot saved
+  Group A CR evolution plot saved
+
+--- Group B (12 cases) ---
+  Group_B summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\CR\Group_B\Group_B_summary.csv
+  Group B CR plot saved
+  Group B CR evolution plot saved
+
+--- Group C (12 cases) ---
+  Group_C summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\CR\Group_C\Group_C_summary.csv
+  Group C CR plot saved
+  Group C CR evolution plot saved
+
+--- Group D (27 cases) ---
+  Group_D summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\CR\Group_D\Group_D_summary.csv
+  Group D CR vs enrichment plot saved
+  Group D CR vs Th by Pu plot saved
+  Group D CR evolution plot saved
+
+=== All outputs generated ===
+  Adens_evolution: C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution
+  CR analysis:     C:\Users\lsy05\serpent_data\results\analysis\CR

@@ -1,0 +1,20 @@
+Loading data from C:\Users\lsy05\serpent_data\results\data_processed\data.csv...
+Loaded 1638 rows, 63 cases
+
+=== Adens_evolution plots ===
+Case A001 Adens_evolution saved (12 plots)
+Case A001 Keff plot saved
+  Case A001: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A001\A001_adens_summary.csv
+Case A002 Adens_evolution saved (12 plots)
+Case A002 Keff plot saved
+  Case A002: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A002\A002_adens_summary.csv
+Case A003 Adens_evolution saved (12 plots)
+Case A003 Keff plot saved
+  Case A003: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A003\A003_adens_summary.csv
+Case A004 Adens_evolution saved (12 plots)
+Case A004 Keff plot saved
+  Case A004: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A004\A004_adens_summary.csv
+Case A005 Adens_evolution saved (12 plots)
+Case A005 Keff plot saved
+  Case A005: adens summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\Adens_evolution\A005\A005_adens_summary.csv
+Case A006 Adens_evolution saved (12 plots)

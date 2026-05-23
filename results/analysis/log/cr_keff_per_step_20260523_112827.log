@@ -1,0 +1,191 @@
+Loading data from C:\Users\lsy05\serpent_data\results\data_processed\data.csv...
+Loaded 1638 rows, 63 cases
+Groups found: ['A', 'B', 'C', 'D']
+
+=== Generating CR vs Keff per burnup step ===
+
+--- Step 00 ---
+  CR_vs_Keff_A_series_step00.png
+  CR_vs_Keff_B_series_step00.png
+  CR_vs_Keff_C_series_step00.png
+  CR_vs_Keff_D_series_step00.png
+  CR_vs_Keff_ALL_series_step00.png
+
+--- Step 01 ---
+  CR_vs_Keff_A_series_step01.png
+  CR_vs_Keff_B_series_step01.png
+  CR_vs_Keff_C_series_step01.png
+  CR_vs_Keff_D_series_step01.png
+  CR_vs_Keff_ALL_series_step01.png
+
+--- Step 02 ---
+  CR_vs_Keff_A_series_step02.png
+  CR_vs_Keff_B_series_step02.png
+  CR_vs_Keff_C_series_step02.png
+  CR_vs_Keff_D_series_step02.png
+  CR_vs_Keff_ALL_series_step02.png
+
+--- Step 03 ---
+  CR_vs_Keff_A_series_step03.png
+  CR_vs_Keff_B_series_step03.png
+  CR_vs_Keff_C_series_step03.png
+  CR_vs_Keff_D_series_step03.png
+  CR_vs_Keff_ALL_series_step03.png
+
+--- Step 04 ---
+  CR_vs_Keff_A_series_step04.png
+  CR_vs_Keff_B_series_step04.png
+  CR_vs_Keff_C_series_step04.png
+  CR_vs_Keff_D_series_step04.png
+  CR_vs_Keff_ALL_series_step04.png
+
+--- Step 05 ---
+  CR_vs_Keff_A_series_step05.png
+  CR_vs_Keff_B_series_step05.png
+  CR_vs_Keff_C_series_step05.png
+  CR_vs_Keff_D_series_step05.png
+  CR_vs_Keff_ALL_series_step05.png
+
+--- Step 06 ---
+  CR_vs_Keff_A_series_step06.png
+  CR_vs_Keff_B_series_step06.png
+  CR_vs_Keff_C_series_step06.png
+  CR_vs_Keff_D_series_step06.png
+  CR_vs_Keff_ALL_series_step06.png
+
+--- Step 07 ---
+  CR_vs_Keff_A_series_step07.png
+  CR_vs_Keff_B_series_step07.png
+  CR_vs_Keff_C_series_step07.png
+  CR_vs_Keff_D_series_step07.png
+  CR_vs_Keff_ALL_series_step07.png
+
+--- Step 08 ---
+  CR_vs_Keff_A_series_step08.png
+  CR_vs_Keff_B_series_step08.png
+  CR_vs_Keff_C_series_step08.png
+  CR_vs_Keff_D_series_step08.png
+  CR_vs_Keff_ALL_series_step08.png
+
+--- Step 09 ---
+  CR_vs_Keff_A_series_step09.png
+  CR_vs_Keff_B_series_step09.png
+  CR_vs_Keff_C_series_step09.png
+  CR_vs_Keff_D_series_step09.png
+  CR_vs_Keff_ALL_series_step09.png
+
+--- Step 10 ---
+  CR_vs_Keff_A_series_step10.png
+  CR_vs_Keff_B_series_step10.png
+  CR_vs_Keff_C_series_step10.png
+  CR_vs_Keff_D_series_step10.png
+  CR_vs_Keff_ALL_series_step10.png
+
+--- Step 11 ---
+  CR_vs_Keff_A_series_step11.png
+  CR_vs_Keff_B_series_step11.png
+  CR_vs_Keff_C_series_step11.png
+  CR_vs_Keff_D_series_step11.png
+  CR_vs_Keff_ALL_series_step11.png
+
+--- Step 12 ---
+  CR_vs_Keff_A_series_step12.png
+  CR_vs_Keff_B_series_step12.png
+  CR_vs_Keff_C_series_step12.png
+  CR_vs_Keff_D_series_step12.png
+  CR_vs_Keff_ALL_series_step12.png
+
+--- Step 13 ---
+  CR_vs_Keff_A_series_step13.png
+  CR_vs_Keff_B_series_step13.png
+  CR_vs_Keff_C_series_step13.png
+  CR_vs_Keff_D_series_step13.png
+  CR_vs_Keff_ALL_series_step13.png
+
+--- Step 14 ---
+  CR_vs_Keff_A_series_step14.png
+  CR_vs_Keff_B_series_step14.png
+  CR_vs_Keff_C_series_step14.png
+  CR_vs_Keff_D_series_step14.png
+  CR_vs_Keff_ALL_series_step14.png
+
+--- Step 15 ---
+  CR_vs_Keff_A_series_step15.png
+  CR_vs_Keff_B_series_step15.png
+  CR_vs_Keff_C_series_step15.png
+  CR_vs_Keff_D_series_step15.png
+  CR_vs_Keff_ALL_series_step15.png
+
+--- Step 16 ---
+  CR_vs_Keff_A_series_step16.png
+  CR_vs_Keff_B_series_step16.png
+  CR_vs_Keff_C_series_step16.png
+  CR_vs_Keff_D_series_step16.png
+  CR_vs_Keff_ALL_series_step16.png
+
+--- Step 17 ---
+  CR_vs_Keff_A_series_step17.png
+  CR_vs_Keff_B_series_step17.png
+  CR_vs_Keff_C_series_step17.png
+  CR_vs_Keff_D_series_step17.png
+  CR_vs_Keff_ALL_series_step17.png
+
+--- Step 18 ---
+  CR_vs_Keff_A_series_step18.png
+  CR_vs_Keff_B_series_step18.png
+  CR_vs_Keff_C_series_step18.png
+  CR_vs_Keff_D_series_step18.png
+  CR_vs_Keff_ALL_series_step18.png
+
+--- Step 19 ---
+  CR_vs_Keff_A_series_step19.png
+  CR_vs_Keff_B_series_step19.png
+  CR_vs_Keff_C_series_step19.png
+  CR_vs_Keff_D_series_step19.png
+  CR_vs_Keff_ALL_series_step19.png
+
+--- Step 20 ---
+  CR_vs_Keff_A_series_step20.png
+  CR_vs_Keff_B_series_step20.png
+  CR_vs_Keff_C_series_step20.png
+  CR_vs_Keff_D_series_step20.png
+  CR_vs_Keff_ALL_series_step20.png
+
+--- Step 21 ---
+  CR_vs_Keff_A_series_step21.png
+  CR_vs_Keff_B_series_step21.png
+  CR_vs_Keff_C_series_step21.png
+  CR_vs_Keff_D_series_step21.png
+  CR_vs_Keff_ALL_series_step21.png
+
+--- Step 22 ---
+  CR_vs_Keff_A_series_step22.png
+  CR_vs_Keff_B_series_step22.png
+  CR_vs_Keff_C_series_step22.png
+  CR_vs_Keff_D_series_step22.png
+  CR_vs_Keff_ALL_series_step22.png
+
+--- Step 23 ---
+  CR_vs_Keff_A_series_step23.png
+  CR_vs_Keff_B_series_step23.png
+  CR_vs_Keff_C_series_step23.png
+  CR_vs_Keff_D_series_step23.png
+  CR_vs_Keff_ALL_series_step23.png
+
+--- Step 24 ---
+  CR_vs_Keff_A_series_step24.png
+  CR_vs_Keff_B_series_step24.png
+  CR_vs_Keff_C_series_step24.png
+  CR_vs_Keff_D_series_step24.png
+  CR_vs_Keff_ALL_series_step24.png
+
+--- Step 25 ---
+  CR_vs_Keff_A_series_step25.png
+  CR_vs_Keff_B_series_step25.png
+  CR_vs_Keff_C_series_step25.png
+  CR_vs_Keff_D_series_step25.png
+  CR_vs_Keff_ALL_series_step25.png
+
+=== All outputs generated ===
+  Output directory: C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF
+  Total images: 130

@@ -1,0 +1,50 @@
+Cleaning old CR+KEFF images...
+Loading data from data_processed/data.csv...
+Loaded 1638 rows, 63 cases
+Groups found: ['A', 'B', 'C', 'D']
+
+=== Generating CR vs Keff per burnup step ===
+
+--- Step 00 ---
+  CR_vs_Keff_A_series_step00.png
+  CR_vs_Keff_B_series_step00.png
+  CR_vs_Keff_C_series_step00.png
+  CR_vs_Keff_D_series_step00.png
+  CR_vs_Keff_ALL_series_step00.png
+
+--- Step 01 ---
+  CR_vs_Keff_A_series_step01.png
+  CR_vs_Keff_B_series_step01.png
+  CR_vs_Keff_C_series_step01.png
+  CR_vs_Keff_D_series_step01.png
+  CR_vs_Keff_ALL_series_step01.png
+
+--- Step 02 ---
+  CR_vs_Keff_A_series_step02.png
+  CR_vs_Keff_B_series_step02.png
+  CR_vs_Keff_C_series_step02.png
+  CR_vs_Keff_D_series_step02.png
+  CR_vs_Keff_ALL_series_step02.png
+
+--- Step 03 ---
+  CR_vs_Keff_A_series_step03.png
+  CR_vs_Keff_B_series_step03.png
+  CR_vs_Keff_C_series_step03.png
+  CR_vs_Keff_D_series_step03.png
+  CR_vs_Keff_ALL_series_step03.png
+
+--- Step 04 ---
+  CR_vs_Keff_A_series_step04.png
+  CR_vs_Keff_B_series_step04.png
+  CR_vs_Keff_C_series_step04.png
+  CR_vs_Keff_D_series_step04.png
+  CR_vs_Keff_ALL_series_step04.png
+
+--- Step 05 ---
+  CR_vs_Keff_A_series_step05.png
+  CR_vs_Keff_B_series_step05.png
+  CR_vs_Keff_C_series_step05.png
+  CR_vs_Keff_D_series_step05.png
+  CR_vs_Keff_ALL_series_step05.png
+
+--- Step 06 ---

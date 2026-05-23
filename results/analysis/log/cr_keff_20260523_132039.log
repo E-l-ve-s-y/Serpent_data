@@ -1,0 +1,7 @@
+Loading data from C:\Users\lsy05\serpent_data\results\data_processed\data.csv...
+Loaded 1638 rows, 63 cases
+Groups found: ['A', 'B', 'C', 'D']
+
+=== Generating per-case CR vs Keff plots ===
+
+--- Group A (12 cases) ---

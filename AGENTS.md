@@ -21,7 +21,7 @@ serpent_data/
 │   └── script/             # All Python scripts
 │       ├── extract_data.py
 │       ├── analyze_data.py
-│       ├── adens_cr_analysis.py
+│       ├── plot_CR_evolution.py
 │       ├── plot_neutron_spectra.py
 │       └── agent/          # AI agent layer
 │           ├── data_layer.py
@@ -36,7 +36,7 @@ serpent_data/
 |--------|---------|--------|
 | `script/extract_data.py` | Parse `.sss_dep.m`, `.sss_res.m`, detector files | `data_processed/data.csv`, `data_lake.db`, `detector_spectra.csv` |
 | `script/analyze_data.py` | Generate per-case plots (keff/FIR/CR, mass evolution) | `analysis/plots/{case}/` |
-| `script/adens_cr_analysis.py` | Adens evolution + CR group analysis | `analysis/Adens_evolution/`, `analysis/CR/` |
+| `script/plot_CR_evolution.py` | CR group analysis | `analysis/CR/` |
 | `script/plot_neutron_spectra.py` | Neutron spectrum plots from detector data | `analysis/Neutron_spectra/` |
 
 ## Critical Working Directory Rule
@@ -94,7 +94,7 @@ U233, U235, Pu239, Pu241
 ## Output Conventions
 
 - **Console**: One-line per case, e.g., `Processing D020, pictures have saved`
-- **Logs**: Timestamped to `analysis/log/` (analyze_data.py, adens_cr_analysis.py)
+- **Logs**: Timestamped to `analysis/log/` (analyze_data.py, plot_CR_evolution.py)
 - **Plots**: Per-case subdirectories under output root
 
 ## DataLayer API (for agents)

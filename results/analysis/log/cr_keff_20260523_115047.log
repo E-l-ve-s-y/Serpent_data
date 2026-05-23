@@ -1,0 +1,73 @@
+Loading data from C:\Users\lsy05\serpent_data\results\data_processed\data.csv...
+Loaded 1638 rows, 63 cases
+Groups found: ['A', 'B', 'C', 'D']
+
+=== Generating per-case CR vs Keff plots ===
+Case A001: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\A_series\A001_CR_vs_KEFF.png
+Case A002: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\A_series\A002_CR_vs_KEFF.png
+Case A003: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\A_series\A003_CR_vs_KEFF.png
+Case A004: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\A_series\A004_CR_vs_KEFF.png
+Case A005: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\A_series\A005_CR_vs_KEFF.png
+Case A006: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\A_series\A006_CR_vs_KEFF.png
+Case A007: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\A_series\A007_CR_vs_KEFF.png
+Case A008: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\A_series\A008_CR_vs_KEFF.png
+Case A009: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\A_series\A009_CR_vs_KEFF.png
+Case A010: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\A_series\A010_CR_vs_KEFF.png
+Case A011: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\A_series\A011_CR_vs_KEFF.png
+Case A012: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\A_series\A012_CR_vs_KEFF.png
+Case B001: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\B_series\B001_CR_vs_KEFF.png
+Case B002: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\B_series\B002_CR_vs_KEFF.png
+Case B003: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\B_series\B003_CR_vs_KEFF.png
+Case B004: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\B_series\B004_CR_vs_KEFF.png
+Case B005: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\B_series\B005_CR_vs_KEFF.png
+Case B006: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\B_series\B006_CR_vs_KEFF.png
+Case B007: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\B_series\B007_CR_vs_KEFF.png
+Case B008: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\B_series\B008_CR_vs_KEFF.png
+Case B009: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\B_series\B009_CR_vs_KEFF.png
+Case B010: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\B_series\B010_CR_vs_KEFF.png
+Case B011: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\B_series\B011_CR_vs_KEFF.png
+Case B012: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\B_series\B012_CR_vs_KEFF.png
+Case C001: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\C_series\C001_CR_vs_KEFF.png
+Case C002: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\C_series\C002_CR_vs_KEFF.png
+Case C003: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\C_series\C003_CR_vs_KEFF.png
+Case C004: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\C_series\C004_CR_vs_KEFF.png
+Case C005: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\C_series\C005_CR_vs_KEFF.png
+Case C006: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\C_series\C006_CR_vs_KEFF.png
+Case C007: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\C_series\C007_CR_vs_KEFF.png
+Case C008: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\C_series\C008_CR_vs_KEFF.png
+Case C009: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\C_series\C009_CR_vs_KEFF.png
+Case C010: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\C_series\C010_CR_vs_KEFF.png
+Case C011: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\C_series\C011_CR_vs_KEFF.png
+Case C012: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\C_series\C012_CR_vs_KEFF.png
+Case D001: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D001_CR_vs_KEFF.png
+Case D002: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D002_CR_vs_KEFF.png
+Case D003: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D003_CR_vs_KEFF.png
+Case D004: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D004_CR_vs_KEFF.png
+Case D005: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D005_CR_vs_KEFF.png
+Case D006: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D006_CR_vs_KEFF.png
+Case D007: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D007_CR_vs_KEFF.png
+Case D008: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D008_CR_vs_KEFF.png
+Case D009: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D009_CR_vs_KEFF.png
+Case D010: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D010_CR_vs_KEFF.png
+Case D011: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D011_CR_vs_KEFF.png
+Case D012: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D012_CR_vs_KEFF.png
+Case D013: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D013_CR_vs_KEFF.png
+Case D014: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D014_CR_vs_KEFF.png
+Case D015: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D015_CR_vs_KEFF.png
+Case D016: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D016_CR_vs_KEFF.png
+Case D017: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D017_CR_vs_KEFF.png
+Case D018: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D018_CR_vs_KEFF.png
+Case D019: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D019_CR_vs_KEFF.png
+Case D020: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D020_CR_vs_KEFF.png
+Case D021: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D021_CR_vs_KEFF.png
+Case D022: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D022_CR_vs_KEFF.png
+Case D023: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D023_CR_vs_KEFF.png
+Case D024: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D024_CR_vs_KEFF.png
+Case D025: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D025_CR_vs_KEFF.png
+Case D026: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D026_CR_vs_KEFF.png
+Case D027: plot saved to C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\D_series\D027_CR_vs_KEFF.png
+
+=== All outputs generated ===
+  Output directory: C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF
+  Highlight report: C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\result_cr_keff
+  Total highlight hits: 0

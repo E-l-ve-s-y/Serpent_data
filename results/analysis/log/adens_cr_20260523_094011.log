@@ -1,0 +1,6 @@
+Loading data from C:\Users\lsy05\serpent_data\results\data_processed\data.csv...
+Loaded 1638 rows, 63 cases
+Groups found: ['A', 'B', 'C', 'D']
+
+=== Adens_evolution plots ===
+Case A001 Adens_evolution saved (12 plots)

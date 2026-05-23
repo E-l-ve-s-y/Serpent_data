@@ -1,0 +1,40 @@
+Loading data from data_processed/data.csv...
+Loaded 1638 rows, 63 cases
+
+=== Adens_evolution plots ===
+Case A001 Adens_evolution saved (12 plots)
+Case A001 Keff plot saved
+  Case A001: adens summary CSV saved to analysis\Adens_evolution\A001\A001_adens_summary.csv
+Case A002 Adens_evolution saved (12 plots)
+Case A002 Keff plot saved
+  Case A002: adens summary CSV saved to analysis\Adens_evolution\A002\A002_adens_summary.csv
+Case A003 Adens_evolution saved (12 plots)
+Case A003 Keff plot saved
+  Case A003: adens summary CSV saved to analysis\Adens_evolution\A003\A003_adens_summary.csv
+Case A004 Adens_evolution saved (12 plots)
+Case A004 Keff plot saved
+  Case A004: adens summary CSV saved to analysis\Adens_evolution\A004\A004_adens_summary.csv
+Case A005 Adens_evolution saved (12 plots)
+Case A005 Keff plot saved
+  Case A005: adens summary CSV saved to analysis\Adens_evolution\A005\A005_adens_summary.csv
+Case A006 Adens_evolution saved (12 plots)
+Case A006 Keff plot saved
+  Case A006: adens summary CSV saved to analysis\Adens_evolution\A006\A006_adens_summary.csv
+Case A007 Adens_evolution saved (12 plots)
+Case A007 Keff plot saved
+  Case A007: adens summary CSV saved to analysis\Adens_evolution\A007\A007_adens_summary.csv
+Case A008 Adens_evolution saved (12 plots)
+Case A008 Keff plot saved
+  Case A008: adens summary CSV saved to analysis\Adens_evolution\A008\A008_adens_summary.csv
+Case A009 Adens_evolution saved (12 plots)
+Case A009 Keff plot saved
+  Case A009: adens summary CSV saved to analysis\Adens_evolution\A009\A009_adens_summary.csv
+Case A010 Adens_evolution saved (12 plots)
+Case A010 Keff plot saved
+  Case A010: adens summary CSV saved to analysis\Adens_evolution\A010\A010_adens_summary.csv
+Case A011 Adens_evolution saved (12 plots)
+Case A011 Keff plot saved
+  Case A011: adens summary CSV saved to analysis\Adens_evolution\A011\A011_adens_summary.csv
+Case A012 Adens_evolution saved (12 plots)
+Case A012 Keff plot saved
+  Case A012: adens summary CSV saved to analysis\Adens_evolution\A012\A012_adens_summary.csv

@@ -1,0 +1,14 @@
+Cleaning old CR/Keff images...
+Loading data from C:\Users\lsy05\serpent_data\results\data_processed\data.csv...
+Loaded 1638 rows, 63 cases
+Groups found: ['A', 'B', 'C', 'D']
+
+=== CR vs Keff Scatter Plots ===
+  CR_vs_Keff_A_series.png saved
+  CR_vs_Keff_B_series.png saved
+  CR_vs_Keff_C_series.png saved
+  CR_vs_Keff_D_series.png saved
+  CR_vs_Keff_ALL_series.png saved
+
+=== All outputs generated ===
+  Output directory: C:\Users\lsy05\serpent_data\results\analysis

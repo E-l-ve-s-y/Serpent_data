@@ -1,0 +1,81 @@
+Loading data from C:\Users\lsy05\serpent_data\results\data_processed\data.csv...
+Loaded 1638 rows, 63 cases
+Groups found: ['A', 'B', 'C', 'D']
+
+=== Generating per-case CR vs Keff plots ===
+
+--- Group A (12 cases) ---
+  A001_cr_keff.png
+  A002_cr_keff.png
+  A003_cr_keff.png
+  A004_cr_keff.png
+  A005_cr_keff.png
+  A006_cr_keff.png
+  A007_cr_keff.png
+  A008_cr_keff.png
+  A009_cr_keff.png
+  A010_cr_keff.png
+  A011_cr_keff.png
+  A012_cr_keff.png
+
+--- Group B (12 cases) ---
+  B001_cr_keff.png
+  B002_cr_keff.png
+  B003_cr_keff.png
+  B004_cr_keff.png
+  B005_cr_keff.png
+  B006_cr_keff.png
+  B007_cr_keff.png
+  B008_cr_keff.png
+  B009_cr_keff.png
+  B010_cr_keff.png
+  B011_cr_keff.png
+  B012_cr_keff.png
+
+--- Group C (12 cases) ---
+  C001_cr_keff.png
+  C002_cr_keff.png
+  C003_cr_keff.png
+  C004_cr_keff.png
+  C005_cr_keff.png
+  C006_cr_keff.png
+  C007_cr_keff.png
+  C008_cr_keff.png
+  C009_cr_keff.png
+  C010_cr_keff.png
+  C011_cr_keff.png
+  C012_cr_keff.png
+
+--- Group D (27 cases) ---
+  D001_cr_keff.png
+  D002_cr_keff.png
+  D003_cr_keff.png
+  D004_cr_keff.png
+  D005_cr_keff.png
+  D006_cr_keff.png
+  D007_cr_keff.png
+  D008_cr_keff.png
+  D009_cr_keff.png
+  D010_cr_keff.png
+  D011_cr_keff.png
+  D012_cr_keff.png
+  D013_cr_keff.png
+  D014_cr_keff.png
+  D015_cr_keff.png
+  D016_cr_keff.png
+  D017_cr_keff.png
+  D018_cr_keff.png
+  D019_cr_keff.png
+  D020_cr_keff.png
+  D021_cr_keff.png
+  D022_cr_keff.png
+  D023_cr_keff.png
+  D024_cr_keff.png
+  D025_cr_keff.png
+  D026_cr_keff.png
+  D027_cr_keff.png
+
+=== All outputs generated ===
+  Output directory: C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF
+  Summary file: C:\Users\lsy05\serpent_data\results\analysis\CR+KEFF\result_cr_keff
+  Highlighted points: 1619

@@ -1,0 +1,29 @@
+Loading data from C:\Users\lsy05\serpent_data\results\data_processed\data.csv...
+Loaded 1638 rows, 63 cases
+Groups found: ['A', 'B', 'C', 'D']
+
+=== CR Group Analysis ===
+
+--- Group A (12 cases) ---
+  Group_A summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\CR\Group_A\Group_A_summary.csv
+  Group A CR plot saved
+  Group A CR evolution plot saved
+
+--- Group B (12 cases) ---
+  Group_B summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\CR\Group_B\Group_B_summary.csv
+  Group B CR plot saved
+  Group B CR evolution plot saved
+
+--- Group C (12 cases) ---
+  Group_C summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\CR\Group_C\Group_C_summary.csv
+  Group C CR plot saved
+  Group C CR evolution plot saved
+
+--- Group D (27 cases) ---
+  Group_D summary CSV saved to C:\Users\lsy05\serpent_data\results\analysis\CR\Group_D\Group_D_summary.csv
+  Group D CR vs enrichment plot saved
+  Group D CR vs Th by Pu plot saved
+  Group D CR evolution plot saved
+
+=== All outputs generated ===
+  CR analysis: C:\Users\lsy05\serpent_data\results\analysis\CR
