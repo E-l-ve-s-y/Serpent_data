@@ -98,3 +98,12 @@ Decision: **create scaffold stubs with explicit TODO guidance** (non-destructive
 2. Move shared physical constants/logging into `thorium_fuel_design/scripts/utils/`.
 3. Incrementally replace adapter forwarding with native modular implementations.
 4. Add automated tests after `pytest` is available in environment.
+
+
+## 6) Fill Pass (based on existing repository content)
+
+- Replaced placeholder READMEs/docs/notes in `thorium_fuel_design/` with concrete content from current `results/` dataset.
+- Populated `00_reference/UO2_5pct` using existing case `A003`, including extracted CSV files:
+  - `keff_burnup.csv`, `tfc_burnup.csv`, `nuclides_233U.csv`, `nuclides_235U.csv`, `nuclides_239Pu.csv`, `nuclides_233Pa.csv`, `spectrum_th.csv`.
+- Added best-candidate comparison artifacts in `04_best_candidates/comparison/` from current data scope (A004/A009).
+- Added matrix templates for currently-missing heterogeneous/denatured datasets and explicitly marked status as pending.
