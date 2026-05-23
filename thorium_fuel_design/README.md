@@ -20,3 +20,9 @@
 ## 运行约束
 
 现有可执行逻辑仍在 `results/script/`，并通过 `thorium_fuel_design/scripts/` 适配入口调用。
+
+## 目标输出汇总
+
+- `outputs/tables/`：已根据现有数据生成首版汇总与筛选表。
+- `outputs/figures/`：保留目标结构，当前图像来源仍在 `results/analysis/`。
+- `outputs/processed_data/`：已写入现有数据库/CSV来源指针。
