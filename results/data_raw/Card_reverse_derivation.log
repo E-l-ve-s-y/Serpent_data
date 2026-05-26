@@ -1,0 +1,181 @@
+Card Serpent输入卡参数反向推导日志
+=====================================
+
+目标
+----
+根据 [results/data_raw/Card/D013.sss](results/data_raw/Card/D013.sss) 与 [results/script/generate_cases.py](results/script/generate_cases.py) 反向推导 D013 的参数生成过程，并将可复核的公式、输入来源和派生结果记录如下。
+
+一、输入来源
+------------
+1. 算例行来自 [results/data_raw/cases.csv](results/data_raw/cases.csv)，对应记录为：
+   case_id = D013
+   layout_base = uniform
+   Th_level = 0.80
+   Pu_level = 0.06
+   U235_enrichment = 0.02
+   U233_enrichment = 0.00
+
+2. 生成逻辑来自 [results/script/generate_cases.py](results/script/generate_cases.py)：
+   - parse_case_row() 负责把 CSV 行转成同位素配比
+   - hm_number_fractions() 负责把 Th/Pu/U233/U235/U238 组分拆分出来
+   - back_calculate_hm_atom_dens() 负责反推燃料重核素原子密度
+   - material_block() 负责把原子密度展开成 Serpent 材料卡
+
+二、D013 的名称与标题生成
+------------------------
+1. case_name 直接使用 CSV 中的 case_id，因此算例名为 D013。
+
+2. TITLE 的生成规则来自脚本中的格式化字符串：
+   {case_name}_homo_{fissile_type}_Th{Th_level:.3f}_Pu{Pu_level:.3f}_U233{U233_enrichment:.3f}_U235E{U235_enrichment:.5f}
+
+3. 对 D013 代入后得到：
+   D013_homo_Pu239+U235_Th0.800_Pu0.060_U2330.000_U235E0.02000
+
+4. 这里的 fissile_type 由 infer_fissile_type() 判断：
+   - Pu239 > 0 且 U235 > 0
+   - 因而类型归类为 Pu239+U235
+
+三、同位素分配的反推过程
+----------------------
+1. hm_number_fractions() 的核心公式：
+   u_total = 1 - Th_level - Pu_level - U233_enrichment
+   u235 = u_total * U235_enrichment
+   u238 = u_total - u235
+
+2. 代入 D013：
+   Th_level = 0.80
+   Pu_level = 0.06
+   U233_enrichment = 0.00
+   U235_enrichment = 0.02
+
+3. 计算结果：
+   u_total = 1 - 0.80 - 0.06 - 0.00 = 0.14
+   u235 = 0.14 * 0.02 = 0.0028000000
+   u238 = 0.14 - 0.0028 = 0.1372000000
+
+4. 最终重核素原子分数：
+   th232 = 0.80
+   u233 = 0.00
+   pu239 = 0.06
+   u235 = 0.0028
+   u238 = 0.1372
+
+四、燃料材料密度的反推过程
+------------------------
+1. back_calculate_hm_atom_dens() 先计算单组件燃料总体积：
+   V = fuel_rods * pi * fuel_r^2 * active_height_cm
+
+2. 脚本默认几何参数：
+   fuel_rods = 264
+   fuel_r = 0.410 cm
+   active_height_cm = 365.0 cm
+
+3. 代入后得到总燃料体积：
+   V = 50887.88222760 cm^3
+
+4. hm_average_molar_mass() 计算重核素平均摩尔质量：
+   M_HM = th232*232 + u233*233 + u235*235 + u238*238 + pu239*239
+
+5. D013 对应值：
+   M_HM = 0.80*232 + 0.00*233 + 0.0028*235 + 0.1372*238 + 0.06*239
+       = 233.2516 g/mol-HM
+
+6. 氧化物摩尔质量：
+   M_ox = M_HM + 2 * 16
+        = 265.2516 g/mol-formula
+
+7. 质量回推公式：
+   hm_atom_dens = (target_mass_kg * 1.0e3 * Avogadro)
+                  / (M_ox * V * 1.0e24)
+
+8. 脚本默认目标质量：
+   target_mass_kg = 498.7
+
+9. 代入后得到：
+   hm_atom_dens = 2.224937833165e-02 atoms/b-cm
+
+10. 反向校核质量：
+   mass_check = 498.700000 kg
+
+五、材料卡展开结果
+----------------
+material_block() 用 hm_atom_dens 乘以组分分数，得到各同位素原子密度。
+
+1. 氧-16：
+   2 * hm_atom_dens = 4.44987567e-02
+
+2. Th-232：
+   hm_atom_dens * 0.80 = 1.77995027e-02
+
+3. Pu-239：
+   hm_atom_dens * 0.06 = 1.33496270e-03
+
+4. U-235：
+   hm_atom_dens * 0.0028 = 6.22982593e-05
+
+5. U-238：
+   hm_atom_dens * 0.1372 = 3.05261471e-03
+
+6. 对照 D013.sss 中 fuel 材料卡，数值完全一致：
+   8016.09c   4.44987567e-02
+   90232.09c  1.77995027e-02
+   94239.09c  1.33496270e-03
+   92235.09c  6.22982593e-05
+   92238.09c  3.05261471e-03
+
+7. mat fuel 第一行中的负密度 9.800 来自脚本参数 fuel_mat_dens = 9.8，
+   它只是 Serpent 材料定义中的质量密度标识，不参与上面的同位素配比反推。
+
+六、模板和脚本固定参数
+--------------------
+以下参数不是由 CSV 变化，而是由 generate_cases.py 的默认值或模板固定给出。
+
+1. 几何与燃料棒参数
+   pin_pitch = 1.260 cm
+   fuel_r = 0.410 cm
+   gas_r = 0.418 cm
+   clad_r = 0.475 cm
+   fuel_rods = 264
+   active_height_cm = 365.0 cm
+
+2. 温度与材料库
+   temp = 900 K
+   acelib = /dssg/home/acct-sc_wang/lu_shiyi/data/endfb7/sss_endfb7u.xsdata
+   declib = /dssg/home/acct-sc_wang/lu_shiyi/data/endfb7/sss_endfb7.dec
+   nfylib = /dssg/home/acct-sc_wang/lu_shiyi/data/endfb7/sss_endfb7.nfy
+
+3. 边界与群结构
+   set bc 2
+   ene e2g: 1E-11, 0.625E-6, 20.0
+   ene e7g: 1E-11, 4.0E-9, 1.0E-8, 1.0E-7, 0.625E-6, 0.906E-3, 3.0E-3, 20.0
+
+4. 中子学与燃耗控制
+   set powdens 3.8E-2
+   set pcc LELI
+   dep butot: 0.1, 0.4, 0.7, 1.0, 1.3, 1.6, 2.0, 2.5, 3.0, 4.0, 5.0, 6.0, 7.0,
+              8.0, 10.0, 12.0, 14.0, 16.0, 18.0, 20.0, 24.0, 28.0, 34.0, 42.0, 50.0
+
+5. 其他固定诊断设置
+   set adf 0 ADF full
+   set ppw 1001 1000
+   set inventory 固定列出的同位素清单
+   set poi 1 4.624065332496000e+02
+   set pop 200000 500 20
+
+七、输出路径生成
+----------------
+1. 脚本将 case_dir 设为 output-root 下的 D013 目录。
+2. 最终输出文件名为 D013.sss。
+3. D013.sss 里的 set outfile 被写成：
+   /home/sy_lu/Modular/cases/D013/D013
+
+八、结论
+--------
+D013 的生成过程可以概括为：
+1. 先从 cases.csv 读入 Th/Pu/U235/U233 配比；
+2. 再用 hm_number_fractions() 计算 U235/U238 的补全分数；
+3. 用固定的几何和目标质量反推 hm_atom_dens；
+4. 用 hm_atom_dens 展开 fuel 材料卡；
+5. 把模板中的固定段落与动态段落合并，得到最终 D013.sss。
+
+本次核对结果表明，脚本反推得到的燃料材料数值与 D013.sss 中的实际卡片完全一致。

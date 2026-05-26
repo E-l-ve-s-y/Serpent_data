@@ -318,7 +318,7 @@ def main() -> None:
 
 		case_dir = out_root / cname
 		case_dir.mkdir(parents=True, exist_ok=True)
-		outfile_path = str((case_dir / cname).resolve())
+		outfile_path = f"/home/sy_lu/Modular/cases/{cname}/{cname}"
 
 		values = {
 			"CASE_ID": cname,
