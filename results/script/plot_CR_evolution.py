@@ -16,7 +16,9 @@ import pandas as pd
 
 
 BASE_DIR = Path(r'C:\Users\lsy05\serpent_data\results')
-CSV_PATH = BASE_DIR / 'data_processed' / 'data.csv'
+# Use split CSVs produced by extract_data.py
+SUMMARY_PATH = BASE_DIR / 'data_processed' / 'summary_keff_cr.csv'
+ADENS_PATH = BASE_DIR / 'data_processed' / 'adens.csv'
 CR_OUT = BASE_DIR / 'analysis' / 'CR'
 
 META_COLS = ['BURN_STEP', 'case', 'layout_base', 'Th_level', 'Pu_level',
@@ -28,10 +30,17 @@ ADENS_KEY = ['Adens_U233', 'Adens_U235', 'Adens_U238', 'Adens_Th232',
              'Adens_Sm149', 'Adens_Xe135']
 
 
-def load_data(csv_path):
-    df = pd.read_csv(csv_path, comment='#')
-    df.columns = df.columns.str.strip()
-    return df
+def load_data(summary_path, adens_path=None):
+    """Load summary (keff/cr) and optionally merge adens data on case+BURN_STEP."""
+    df_sum = pd.read_csv(summary_path, comment='#')
+    df_sum.columns = df_sum.columns.str.strip()
+    if adens_path and Path(adens_path).exists():
+        df_ad = pd.read_csv(adens_path, comment='#')
+        df_ad.columns = df_ad.columns.str.strip()
+        # Merge on case and BURN_STEP
+        df = pd.merge(df_sum, df_ad, on=['case', 'BURN_STEP'], how='left')
+        return df
+    return df_sum
 
 
 def group_cases(df):
@@ -327,8 +336,8 @@ class Tee:
 
 
 def _run(args, cr_dir):
-    print(f'Loading data from {args.csv}...')
-    df = load_data(args.csv)
+    print(f'Loading summary data from {args.summary} and adens from {args.adens}...')
+    df = load_data(args.summary, args.adens)
     print(f'Loaded {len(df)} rows, {df["case"].nunique()} cases')
 
     groups = group_cases(df)
@@ -360,7 +369,8 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(description='Generate CR group analysis.')
-    parser.add_argument('--csv', '-c', default=str(CSV_PATH), help='Path to the processed CSV data file')
+    parser.add_argument('--summary', '-s', default=str(SUMMARY_PATH), help='Path to the summary CSV (keff/cr)')
+    parser.add_argument('--adens', '-a', default=str(ADENS_PATH), help='Path to the adens CSV (atomic densities)')
     parser.add_argument('--cr-out', default=str(CR_OUT), help='Output directory for CR group analysis')
     parser.add_argument('--log', '-l', default=None,
                         help='Path to log file. Default: <cr-out>/cr_YYYYMMDD_HHMMSS.log')

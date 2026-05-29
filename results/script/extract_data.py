@@ -29,6 +29,7 @@ import sys
 from pathlib import Path
 from typing import List, Dict, Tuple, Optional
 import math
+import pandas as pd
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent))
@@ -484,6 +485,59 @@ def walk_and_extract():
         writer.writerows(rows)
     
     print(f"Wrote {OUT_CSV} with {len(rows)} rows and {len(fieldnames)} columns")
+
+    # Also write split CSVs for downstream scripts (keff/cr summary, mdens+mass, adens, fission rates, capture rates)
+    try:
+        df = pd.DataFrame(rows)
+        # Ensure all expected columns exist
+        for col in fieldnames:
+            if col not in df.columns:
+                df[col] = None
+
+        # Summary: keff, conversion, metadata
+        summary_cols = [
+            'BURN_STEP', 'case', 'ANA_KEFF', 'reactivity_pcm', 'conversion_ratio',
+            'EFPD', 'burnup_MWd_kgHM', 'layout_base', 'Th_level', 'Pu_level',
+            'U235_enrichment', 'U233_enrichment'
+        ]
+        summary_df = df[[c for c in summary_cols if c in df.columns]]
+        summary_path = OUT_DIR / 'summary_keff_cr.csv'
+        summary_df.to_csv(summary_path, index=False)
+        print(f'Wrote summary CSV: {summary_path}')
+
+        # Mdens + Mass
+        mdens_cols = [f'Mdens_{iso}' for iso in TARGET_ISOTOPES]
+        mass_cols = [f'Mass_{iso}_kg' for iso in TARGET_ISOTOPES]
+        mdens_mass_cols = ['BURN_STEP', 'case'] + [c for c in (mdens_cols + mass_cols) if c in df.columns]
+        mdens_mass_df = df.loc[:, [c for c in mdens_mass_cols if c in df.columns]]
+        mdens_mass_path = OUT_DIR / 'mdens_mass.csv'
+        mdens_mass_df.to_csv(mdens_mass_path, index=False)
+        print(f'Wrote mdens+mass CSV: {mdens_mass_path}')
+
+        # Adens
+        adens_cols = [f'Adens_{iso}' for iso in TARGET_ISOTOPES]
+        adens_df_cols = ['BURN_STEP', 'case'] + [c for c in adens_cols if c in df.columns]
+        adens_df = df.loc[:, [c for c in adens_df_cols if c in df.columns]]
+        adens_path = OUT_DIR / 'adens.csv'
+        adens_df.to_csv(adens_path, index=False)
+        print(f'Wrote adens CSV: {adens_path}')
+
+        # Fission rates
+        fiss_cols = ['BURN_STEP', 'case'] + [c for c in FISS_RATES if c in df.columns]
+        fiss_df = df.loc[:, [c for c in fiss_cols if c in df.columns]]
+        fiss_path = OUT_DIR / 'fission_rates.csv'
+        fiss_df.to_csv(fiss_path, index=False)
+        print(f'Wrote fission rates CSV: {fiss_path}')
+
+        # Capture rates
+        capt_cols = ['BURN_STEP', 'case'] + [c for c in CAPT_RATES if c in df.columns]
+        capt_df = df.loc[:, [c for c in capt_cols if c in df.columns]]
+        capt_path = OUT_DIR / 'capture_rates.csv'
+        capt_df.to_csv(capt_path, index=False)
+        print(f'Wrote capture rates CSV: {capt_path}')
+
+    except Exception as e:
+        print(f'Warning: failed to write split CSVs: {e}')
 
 
 def populate_data_lake(raw_data_dir: Path, db_path: Optional[Path] = None):

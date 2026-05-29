@@ -36,7 +36,8 @@ AM_PLOT_LABEL = 'Am (241, 243)'
 
 # ── Paths ─────────────────────────────────────────────────────────
 BASE_DIR = Path(r'C:\Users\lsy05\serpent_data\results')
-CSV_PATH = BASE_DIR / 'data_processed' / 'data.csv'
+# Use split adens CSV for adens evolution plotting
+CSV_PATH = BASE_DIR / 'data_processed' / 'adens.csv'
 ADENS_OUT = BASE_DIR / 'analysis' / 'Adens_evolution'
 KEFF_OUT = BASE_DIR / 'analysis' / 'KEFF'
 

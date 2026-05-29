@@ -23,7 +23,8 @@ import pandas as pd
 
 # ── Paths ─────────────────────────────────────────────────────────
 BASE_DIR = Path(r'C:\Users\lsy05\serpent_data\results')
-CSV_PATH = BASE_DIR / 'data_processed' / 'data.csv'
+# Use the split summary CSV produced by extract_data.py
+CSV_PATH = BASE_DIR / 'data_processed' / 'summary_keff_cr.csv'
 OUTPUT_DIR = BASE_DIR / 'analysis' / ('CR+KEFF')
 GROUP_OUTPUT_DIRS = {
     'A': OUTPUT_DIR / 'A_series',
